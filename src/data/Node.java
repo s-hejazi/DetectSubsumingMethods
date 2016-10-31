@@ -5,18 +5,57 @@ import java.util.ArrayList;
 
 public class Node {
 
-	private Method method;
+
 	int cost, height ,induced;
-	private Node parent;
 	Node adjustedParent;
-	private ArrayList<Node> childern;
-	ArrayList<Node> adjustedChildern;
+	private Method method;
+	private Node parent;
+	private Node childNode;
+	private ArrayList<Node> children;
+	private ArrayList<Node> adjustedChildern;
+
+	public String getLeaf() {
+		return leaf;
+	}
+
+	public void setLeaf(String leaf) {
+		this.leaf = leaf;
+	}
+
+	public String getClassName() {
+		return className;
+	}
+
+	public void setClassName(String className) {
+		this.className = className;
+	}
+
+	public String getMethodName() {
+		return methodName;
+	}
+
+	public void setMethodName(String methodName) {
+		this.methodName = methodName;
+	}
+
+	public String getMethodSignature() {
+		return methodSignature;
+	}
+
+	public void setMethodSignature(String methodSignature) {
+		this.methodSignature = methodSignature;
+	}
+
+	private String leaf;
+	private String className;
+	private String methodName;
+	private String methodSignature;
 	
 	public Node(){
 		//method= new Method();
 		parent = null;
 		adjustedParent= null;
-		//childern = new ArrayList<Node>();
+		children = new ArrayList<Node>();
 		//adjustedChildern =new ArrayList<Node>();
 		setCost(0);
 		setHeight(0);
@@ -69,16 +108,25 @@ public class Node {
 	public void setParent(Node parent) {
 		this.parent = parent;
 	}
-	public ArrayList<Node> getChildern() {
-		return childern;
+	public ArrayList<Node> getChildren() {
+		return children;
 	}
-	public void setChildern(ArrayList<Node> childern) {
-		this.childern = childern;
+	public void setChildren(ArrayList<Node> childern) {
+		this.children = childern;
 	}
 	public Method getMethod() {
 		return method;
 	}
 	public void setMethod(Method method) {
 		this.method = method;
+	}
+
+	@Override
+	public String toString() {
+		return "leaf :"+this.getLeaf() + "class: "+this.className+ "methodName: "+this.getMethodName();
+	}
+
+	public void addChildNode(Node childNode) {
+		this.children.add(childNode);
 	}
 }

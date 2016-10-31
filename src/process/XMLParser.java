@@ -79,7 +79,7 @@ public class XMLParser {
 			methodList.add(method);
 			}			
 			method.addNodes(node);
-			//add node method and parent
+			//add isNode method and parent
 			node.setMethod(method);	
 
 			String parentKey = (String)((Element)element.getParentNode()).getUserData("count");
@@ -108,7 +108,7 @@ public class XMLParser {
 					}
 				}
 			}
-			node1.setChildern(childNodes);
+			node1.setChildren(childNodes);
 		}
 	}
 	
@@ -132,8 +132,8 @@ public class XMLParser {
 			System.out.println(node.getMethod().getLabel() + nodeDictionary.size());
 			if(node.getParent()!= null)
 			System.out.println("node's parent: " + node.getParent().getMethod().getLabel() );
-			for(int i=0;i<node.getChildern().size();i++)
-				System.out.println(" node's children : "+ node.getChildern().get(i).getMethod().getLabel());
+			for(int i = 0; i<node.getChildren().size(); i++)
+				System.out.println(" node's children : "+ node.getChildren().get(i).getMethod().getLabel());
 		}
 		CCT = new Tree(root, methodList);
 		System.out.println("CCT created");
