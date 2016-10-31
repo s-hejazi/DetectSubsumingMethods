@@ -13,7 +13,7 @@ public class Node {
 	private Node childNode;
 	private ArrayList<Node> children;
 	private ArrayList<Node> adjustedChildern;
-
+//leaf, classname, signature?
 	public String getLeaf() {
 		return leaf;
 	}

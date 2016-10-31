@@ -64,10 +64,13 @@ public class XMLParser {
 		//CHECK IF EXISTS?
 		if (element != null) 
 		{
-			Node node = new Node();		
+			Node node = new Node();	
+			//cost = time * invoked
 			//Create and Add method only if it has not been parsed before	
 			// METHOD WITH SAME NAME??
 			String methodName = element.getAttribute("methodName");
+			int methodCost = Integer.parseInt(element.getAttribute("time"));
+			node.setCost(methodCost);
 			Method method = null;
 			for(Method m: methodList)
 			if(m.getLabel().equals(methodName)){
@@ -129,9 +132,10 @@ public class XMLParser {
 		for (Node node: nodeDictionary.values())
 		{
 			
-			System.out.println(node.getMethod().getLabel() + nodeDictionary.size());
+			System.out.println(node.getMethod().getLabel());
 			if(node.getParent()!= null)
 			System.out.println("node's parent: " + node.getParent().getMethod().getLabel() );
+			System.out.println(node.getCost());
 			for(int i = 0; i<node.getChildren().size(); i++)
 				System.out.println(" node's children : "+ node.getChildren().get(i).getMethod().getLabel());
 		}

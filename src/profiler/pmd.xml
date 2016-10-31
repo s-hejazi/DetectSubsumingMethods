@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tree type="Call Tree" viewMode="Tree" threadSelection="All thread groups" threadStatus="Runnable" aggregationLevel="Methods">
+  <node leaf="false" class="java.util.concurrent.ThreadPoolExecutor$Worker" methodName="run" methodSignature="()V" time="284555496" count="8" selfTime="86241" lineNumber="-1" percent="97.9">
+    <node leaf="false" class="net.sourceforge.pmd.PMD$PmdRunnable" methodName="call" methodSignature="()Ljava/lang/Object;" time="284469255" count="220" selfTime="850" lineNumber="-1" percent="97.9">
+      <node leaf="false" class="net.sourceforge.pmd.PMD$PmdRunnable" methodName="call" methodSignature="()Lnet/sourceforge/pmd/Report;" time="284468405" count="220" selfTime="7072" lineNumber="-1" percent="97.9">
+        <node leaf="false" class="net.sourceforge.pmd.PMD" methodName="processFile" methodSignature="(Ljava/io/InputStream;Ljava/lang/String;Lnet/sourceforge/pmd/RuleSets;Lnet/sourceforge/pmd/RuleContext;)V" time="282796591" count="220" selfTime="1049" lineNumber="-1" percent="97.3">
+          <node leaf="false" class="net.sourceforge.pmd.PMD" methodName="processFile" methodSignature="(Ljava/io/Reader;Lnet/sourceforge/pmd/RuleSets;Lnet/sourceforge/pmd/RuleContext;)V" time="282728014" count="220" selfTime="1446" lineNumber="-1" percent="97.3">
+            <node leaf="false" class="net.sourceforge.pmd.PMD" methodName="processFile" methodSignature="(Ljava/io/Reader;Lnet/sourceforge/pmd/RuleSets;Lnet/sourceforge/pmd/RuleContext;Lnet/sourceforge/pmd/SourceType;)V" time="282722420" count="220" selfTime="0" lineNumber="-1" percent="97.3">
+              <node leaf="true"/>
+            </node>
+            <node leaf="false" class="net.sourceforge.pmd.PMD" methodName="getSourceTypeOfFile" methodSignature="(Ljava/lang/String;)Lnet/sourceforge/pmd/SourceType;" time="3948" count="220" selfTime="0" lineNumber="-1" percent="0.0">
+              <node leaf="true"/>
+            </node>
+            <node leaf="true" class="net.sourceforge.pmd.RuleContext" methodName="getSourceCodeFilename" methodSignature="()Ljava/lang/String;" time="200" count="220" selfTime="200" lineNumber="-1" percent="0.0"/>
+          </node>
+          <node leaf="true" class="java.io.InputStreamReader" methodName="&lt;init&gt;" methodSignature="(Ljava/io/InputStream;Ljava/lang/String;)V" time="67528" count="220" selfTime="67528" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="false" class="net.sourceforge.pmd.PMD$PmdThread" methodName="getRuleSets" methodSignature="(Ljava/lang/String;)Lnet/sourceforge/pmd/RuleSets;" time="1130969" count="220" selfTime="349" lineNumber="-1" percent="0.4">
+          <node leaf="false" class="net.sourceforge.pmd.RuleSetFactory" methodName="createRuleSets" methodSignature="(Ljava/lang/String;)Lnet/sourceforge/pmd/RuleSets;" time="1130620" count="8" selfTime="129" lineNumber="-1" percent="0.4">
+            <node leaf="false" class="net.sourceforge.pmd.RuleSetFactory" methodName="createRuleSets" methodSignature="(Ljava/lang/String;Ljava/lang/ClassLoader;)Lnet/sourceforge/pmd/RuleSets;" time="1130458" count="8" selfTime="360" lineNumber="-1" percent="0.4">
+              <node leaf="false" class="net.sourceforge.pmd.RuleSets" methodName="addRuleSet" methodSignature="(Lnet/sourceforge/pmd/RuleSet;)V" time="678772" count="8" selfTime="0" lineNumber="-1" percent="0.2">
+                <node leaf="true"/>
+              </node>
+              <node leaf="false" class="net.sourceforge.pmd.RuleSetFactory" methodName="createSingleRuleSet" methodSignature="(Ljava/lang/String;Ljava/lang/ClassLoader;)Lnet/sourceforge/pmd/RuleSet;" time="450820" count="8" selfTime="0" lineNumber="-1" percent="0.2">
+                <node leaf="true"/>
+              </node>
+              <node leaf="true" class="java.util.StringTokenizer" methodName="hasMoreTokens" methodSignature="()Z" time="182" count="16" selfTime="182" lineNumber="-1" percent="0.0"/>
+              <node leaf="true" class="java.util.StringTokenizer" methodName="&lt;init&gt;" methodSignature="(Ljava/lang/String;Ljava/lang/String;)V" time="172" count="8" selfTime="172" lineNumber="-1" percent="0.0"/>
+              <node leaf="false" class="net.sourceforge.pmd.RuleSets" methodName="&lt;init&gt;" methodSignature="()V" time="87" count="8" selfTime="0" lineNumber="-1" percent="0.0">
+                <node leaf="true"/>
+              </node>
+              <node leaf="true" class="java.util.StringTokenizer" methodName="nextToken" methodSignature="()Ljava/lang/String;" time="33" count="8" selfTime="33" lineNumber="-1" percent="0.0"/>
+              <node leaf="true" class="java.lang.String" methodName="trim" methodSignature="()Ljava/lang/String;" time="32" count="8" selfTime="32" lineNumber="-1" percent="0.0"/>
+            </node>
+            <node leaf="true" class="java.lang.Class" methodName="getClassLoader" methodSignature="()Ljava/lang/ClassLoader;" time="18" count="8" selfTime="18" lineNumber="-1" percent="0.0"/>
+            <node leaf="true" class="java.lang.Object" methodName="getClass" methodSignature="()Ljava/lang/Class;" time="15" count="8" selfTime="15" lineNumber="-1" percent="0.0"/>
+          </node>
+        </node>
+        <node leaf="false" class="net.sourceforge.pmd.FileDataSource" methodName="getInputStream" methodSignature="()Ljava/io/InputStream;" time="510446" count="220" selfTime="648" lineNumber="-1" percent="0.2">
+          <node leaf="true" class="java.io.FileInputStream" methodName="&lt;init&gt;" methodSignature="(Ljava/io/File;)V" time="509798" count="220" selfTime="509798" lineNumber="-1" percent="0.2"/>
+        </node>
+        <node leaf="false" class="net.sourceforge.pmd.Report" methodName="&lt;init&gt;" methodSignature="()V" time="16059" count="220" selfTime="1755" lineNumber="-1" percent="0.0">
+          <node leaf="false" class="net.sourceforge.pmd.dfa.report.ReportTree" methodName="&lt;init&gt;" methodSignature="()V" time="12319" count="220" selfTime="800" lineNumber="-1" percent="0.0">
+            <node leaf="false" class="net.sourceforge.pmd.dfa.report.PackageNode" methodName="&lt;init&gt;" methodSignature="(Ljava/lang/String;)V" time="11519" count="220" selfTime="1591" lineNumber="-1" percent="0.0">
+              <node leaf="false" class="net.sourceforge.pmd.dfa.report.AbstractReportNode" methodName="&lt;init&gt;" methodSignature="()V" time="9928" count="220" selfTime="9677" lineNumber="-1" percent="0.0">
+                <node leaf="true" class="java.util.ArrayList" methodName="&lt;init&gt;" methodSignature="()V" time="251" count="220" selfTime="251" lineNumber="-1" percent="0.0"/>
+              </node>
+            </node>
+          </node>
+          <node leaf="true" class="java.util.TreeSet" methodName="&lt;init&gt;" methodSignature="(Ljava/util/Comparator;)V" time="1004" count="220" selfTime="1004" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.util.ArrayList" methodName="&lt;init&gt;" methodSignature="()V" time="515" count="660" selfTime="515" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.util.HashSet" methodName="&lt;init&gt;" methodSignature="()V" time="268" count="220" selfTime="268" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.util.HashMap" methodName="&lt;init&gt;" methodSignature="()V" time="198" count="220" selfTime="198" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="true" class="java.io.BufferedInputStream" methodName="&lt;init&gt;" methodSignature="(Ljava/io/InputStream;)V" time="2057" count="220" selfTime="2057" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.io.File" methodName="&lt;init&gt;" methodSignature="(Ljava/lang/String;)V" time="867" count="220" selfTime="867" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.util.logging.Logger" methodName="isLoggable" methodSignature="(Ljava/util/logging/Level;)Z" time="719" count="220" selfTime="719" lineNumber="-1" percent="0.0"/>
+        <node leaf="false" class="org.dacapo.harness.DacapoClassLoader" methodName="loadClass" methodSignature="(Ljava/lang/String;Z)Ljava/lang/Class;" time="638" count="1" selfTime="12" lineNumber="-1" percent="0.0">
+          <node leaf="true" class="java.net.URLClassLoader" methodName="findClass" methodSignature="(Ljava/lang/String;)Ljava/lang/Class;" time="626" count="1" selfTime="626" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="true" class="java.lang.Thread" methodName="currentThread" methodSignature="()Ljava/lang/Thread;" time="618" count="220" selfTime="618" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="net.sourceforge.pmd.renderers.AbstractRenderer" methodName="startFileAnalysis" methodSignature="(Lnet/sourceforge/pmd/DataSource;)V" time="610" count="220" selfTime="610" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.util.List" methodName="iterator" methodSignature="()Ljava/util/Iterator;" time="422" count="220" selfTime="422" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.util.Iterator" methodName="hasNext" methodSignature="()Z" time="362" count="440" selfTime="362" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="net.sourceforge.pmd.PMD" methodName="access$000" methodSignature="()Ljava/util/logging/Logger;" time="176" count="221" selfTime="176" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.util.Iterator" methodName="next" methodSignature="()Ljava/lang/Object;" time="168" count="220" selfTime="168" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="net.sourceforge.pmd.PMD$PmdThread" methodName="getRuleContext" methodSignature="()Lnet/sourceforge/pmd/RuleContext;" time="165" count="220" selfTime="165" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="net.sourceforge.pmd.RuleContext" methodName="setReport" methodSignature="(Lnet/sourceforge/pmd/Report;)V" time="159" count="220" selfTime="159" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="net.sourceforge.pmd.RuleContext" methodName="setSourceCodeFilename" methodSignature="(Ljava/lang/String;)V" time="123" count="220" selfTime="123" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="net.sourceforge.pmd.RuleContext" methodName="setSourceCodeFile" methodSignature="(Ljava/io/File;)V" time="103" count="220" selfTime="103" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="net.sourceforge.pmd.Report$ProcessingError" methodName="&lt;init&gt;" methodSignature="(Ljava/lang/String;Ljava/lang/String;)V" time="43" count="1" selfTime="43" lineNumber="-1" percent="0.0"/>
+        <node leaf="false" class="net.sourceforge.pmd.Report" methodName="addError" methodSignature="(Lnet/sourceforge/pmd/Report$ProcessingError;)V" time="21" count="1" selfTime="4" lineNumber="-1" percent="0.0">
+          <node leaf="true" class="java.util.List" methodName="add" methodSignature="(Ljava/lang/Object;)Z" time="17" count="1" selfTime="17" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="true" class="java.util.logging.Logger" methodName="log" methodSignature="(Ljava/util/logging/Level;Ljava/lang/String;Ljava/lang/Throwable;)V" time="17" count="1" selfTime="17" lineNumber="-1" percent="0.0"/>
+      </node>
+    </node>
+  </node>
+  <node leaf="false" class="Harness" methodName="main" methodSignature="([Ljava/lang/String;)V" time="6130525" count="1" selfTime="32117" lineNumber="-1" percent="2.1">
+    <node leaf="false" class="org.dacapo.harness.TestHarness" methodName="main" methodSignature="([Ljava/lang/String;)V" time="5996141" count="1" selfTime="77933" lineNumber="-1" percent="2.1">
+      <node leaf="false" class="org.dacapo.harness.TestHarness" methodName="runBenchmark" methodSignature="(Ljava/io/File;Ljava/lang/String;Lorg/dacapo/harness/TestHarness;)V" time="5613802" count="1" selfTime="102" lineNumber="-1" percent="1.9">
+        <node leaf="false" class="java.lang.reflect.Constructor" methodName="newInstance" methodSignature="([Ljava/lang/Object;)Ljava/lang/Object;" time="3949534" count="1" selfTime="7403" lineNumber="-1" percent="1.4">
+          <node leaf="false" class="org.dacapo.harness.Benchmark" methodName="&lt;init&gt;" methodSignature="(Lorg/dacapo/parser/Config;Ljava/io/File;)V" time="3704179" count="1" selfTime="0" lineNumber="-1" percent="1.3">
+            <node leaf="true"/>
+          </node>
+          <node leaf="false" class="net.sourceforge.pmd.PMD" methodName="&lt;clinit&gt;" methodSignature="()V" time="131963" count="1" selfTime="0" lineNumber="-1" percent="0.0">
+            <node leaf="true"/>
+          </node>
+          <node leaf="false" class="org.dacapo.harness.DacapoClassLoader" methodName="loadClass" methodSignature="(Ljava/lang/String;Z)Ljava/lang/Class;" time="105989" count="40" selfTime="0" lineNumber="-1" percent="0.0">
+            <node leaf="true"/>
+          </node>
+        </node>
+        <node leaf="false" class="org.dacapo.harness.Benchmark" methodName="run" methodSignature="(Lorg/dacapo/harness/Callback;Ljava/lang/String;)Z" time="1647430" count="1" selfTime="100" lineNumber="-1" percent="0.6">
+          <node leaf="false" class="org.dacapo.harness.Pmd" methodName="iterate" methodSignature="(Ljava/lang/String;)V" time="1593069" count="1" selfTime="0" lineNumber="-1" percent="0.5">
+            <node leaf="true"/>
+          </node>
+          <node leaf="false" class="org.dacapo.harness.Pmd" methodName="prepare" methodSignature="(Ljava/lang/String;)V" time="26056" count="1" selfTime="0" lineNumber="-1" percent="0.0">
+            <node leaf="true"/>
+          </node>
+          <node leaf="true" class="java.lang.System" methodName="gc" methodSignature="()V" time="23096" count="1" selfTime="23096" lineNumber="-1" percent="0.0"/>
+          <node leaf="false" class="org.dacapo.harness.Benchmark" methodName="startIteration" methodSignature="()V" time="4144" count="1" selfTime="0" lineNumber="-1" percent="0.0">
+            <node leaf="true"/>
+          </node>
+          <node leaf="false" class="org.dacapo.harness.Callback" methodName="start" methodSignature="(Ljava/lang/String;)V" time="929" count="1" selfTime="0" lineNumber="-1" percent="0.0">
+            <node leaf="true"/>
+          </node>
+          <node leaf="true" class="java.lang.System" methodName="setOut" methodSignature="(Ljava/io/PrintStream;)V" time="26" count="2" selfTime="26" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.lang.System" methodName="setErr" methodSignature="(Ljava/io/PrintStream;)V" time="8" count="2" selfTime="8" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="org.dacapo.harness.Benchmark" methodName="preIteration" methodSignature="(Ljava/lang/String;)V" time="2" count="1" selfTime="2" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="false" class="org.dacapo.harness.TestHarness" methodName="findClass" methodSignature="()Ljava/lang/Class;" time="12730" count="1" selfTime="29" lineNumber="-1" percent="0.0">
+          <node leaf="true" class="java.lang.Class" methodName="forName" methodSignature="(Ljava/lang/String;)Ljava/lang/Class;" time="12701" count="1" selfTime="12701" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="false" class="org.dacapo.harness.Callback" methodName="init" methodSignature="(Lorg/dacapo/parser/Config;)V" time="3886" count="1" selfTime="3712" lineNumber="-1" percent="0.0">
+          <node leaf="false" class="org.dacapo.harness.Callback$Mode" methodName="&lt;clinit&gt;" methodSignature="()V" time="71" count="1" selfTime="0" lineNumber="-1" percent="0.0">
+            <node leaf="true"/>
+          </node>
+          <node leaf="false" class="org.dacapo.harness.Callback$1" methodName="&lt;clinit&gt;" methodSignature="()V" time="54" count="1" selfTime="0" lineNumber="-1" percent="0.0">
+            <node leaf="true"/>
+          </node>
+          <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getIterations" methodSignature="()I" time="38" count="1" selfTime="0" lineNumber="-1" percent="0.0">
+            <node leaf="true"/>
+          </node>
+          <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getMethodology" methodSignature="()Lorg/dacapo/harness/CommandLineArgs$Methodology;" time="11" count="1" selfTime="0" lineNumber="-1" percent="0.0">
+            <node leaf="true"/>
+          </node>
+        </node>
+        <node leaf="true" class="java.lang.Class" methodName="getConstructor" methodSignature="([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;" time="77" count="1" selfTime="77" lineNumber="-1" percent="0.0"/>
+        <node leaf="false" class="org.dacapo.parser.Config" methodName="printThreadModel" methodSignature="(Ljava/io/PrintStream;Ljava/lang/String;Z)V" time="19" count="1" selfTime="18" lineNumber="-1" percent="0.0">
+          <node leaf="true" class="org.dacapo.parser.Config" methodName="getThreadModel" methodSignature="()Lorg/dacapo/parser/Config$ThreadModel;" time="1" count="1" selfTime="1" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getSize" methodSignature="()Ljava/lang/String;" time="17" count="2" selfTime="3" lineNumber="-1" percent="0.0">
+          <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="getOptionValue" methodSignature="(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" time="14" count="2" selfTime="14" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getVerbose" methodSignature="()Z" time="5" count="1" selfTime="2" lineNumber="-1" percent="0.0">
+          <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="hasOption" methodSignature="(Ljava/lang/String;)Z" time="3" count="1" selfTime="3" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="true" class="org.dacapo.harness.CommandLineArgs" methodName="getCallback" methodSignature="()Lorg/dacapo/harness/Callback;" time="2" count="1" selfTime="2" lineNumber="-1" percent="0.0"/>
+      </node>
+      <node leaf="false" class="org.dacapo.harness.TestHarness" methodName="&lt;init&gt;" methodSignature="(Ljava/io/InputStream;)V" time="178508" count="1" selfTime="442" lineNumber="-1" percent="0.1">
+        <node leaf="false" class="org.dacapo.parser.Config" methodName="parse" methodSignature="(Ljava/io/InputStream;)Lorg/dacapo/parser/Config;" time="176099" count="1" selfTime="20197" lineNumber="-1" percent="0.1">
+          <node leaf="false" class="org.dacapo.parser.ConfigFile" methodName="configFile" methodSignature="()Lorg/dacapo/parser/Config;" time="114223" count="1" selfTime="0" lineNumber="-1" percent="0.0">
+            <node leaf="true"/>
+          </node>
+          <node leaf="false" class="org.dacapo.parser.ConfigFile" methodName="&lt;init&gt;" methodSignature="(Ljava/io/InputStream;)V" time="41614" count="1" selfTime="0" lineNumber="-1" percent="0.0">
+            <node leaf="true"/>
+          </node>
+          <node leaf="false" class="org.dacapo.parser.ConfigFile" methodName="&lt;clinit&gt;" methodSignature="()V" time="65" count="1" selfTime="0" lineNumber="-1" percent="0.0">
+            <node leaf="true"/>
+          </node>
+        </node>
+        <node leaf="true" class="java.util.jar.JarFile" methodName="&lt;init&gt;" methodSignature="(Ljava/io/File;)V" time="873" count="1" selfTime="873" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.util.jar.JarFile" methodName="getManifest" methodSignature="()Ljava/util/jar/Manifest;" time="570" count="1" selfTime="570" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.security.ProtectionDomain" methodName="getCodeSource" methodSignature="()Ljava/security/CodeSource;" time="187" count="1" selfTime="187" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.util.jar.Manifest" methodName="getMainAttributes" methodSignature="()Ljava/util/jar/Attributes;" time="107" count="1" selfTime="107" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.util.jar.Attributes" methodName="get" methodSignature="(Ljava/lang/Object;)Ljava/lang/Object;" time="78" count="2" selfTime="78" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.security.CodeSource" methodName="getLocation" methodSignature="()Ljava/net/URL;" time="51" count="1" selfTime="51" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.io.File" methodName="&lt;init&gt;" methodSignature="(Ljava/lang/String;)V" time="31" count="1" selfTime="31" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.util.jar.Attributes$Name" methodName="&lt;init&gt;" methodSignature="(Ljava/lang/String;)V" time="27" count="2" selfTime="27" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.lang.Class" methodName="getProtectionDomain" methodSignature="()Ljava/security/ProtectionDomain;" time="25" count="1" selfTime="25" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.net.URL" methodName="getFile" methodSignature="()Ljava/lang/String;" time="9" count="1" selfTime="9" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.lang.Object" methodName="toString" methodSignature="()Ljava/lang/String;" time="9" count="2" selfTime="9" lineNumber="-1" percent="0.0"/>
+      </node>
+      <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="&lt;init&gt;" methodSignature="([Ljava/lang/String;)V" time="60620" count="1" selfTime="311" lineNumber="-1" percent="0.0">
+        <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="extractBenchmarkSet" methodSignature="()Ljava/util/List;" time="39149" count="1" selfTime="4715" lineNumber="-1" percent="0.0">
+          <node leaf="true" class="java.lang.String" methodName="replace" methodSignature="(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;" time="12250" count="28" selfTime="12250" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.util.Enumeration" methodName="nextElement" methodSignature="()Ljava/lang/Object;" time="9130" count="180" selfTime="9130" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.util.jar.JarEntry" methodName="getName" methodSignature="()Ljava/lang/String;" time="5218" count="180" selfTime="5218" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.net.JarURLConnection" methodName="getJarFile" methodSignature="()Ljava/util/jar/JarFile;" time="2933" count="1" selfTime="2933" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.net.URL" methodName="openConnection" methodSignature="()Ljava/net/URLConnection;" time="2051" count="1" selfTime="2051" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.lang.ClassLoader" methodName="getResource" methodSignature="(Ljava/lang/String;)Ljava/net/URL;" time="913" count="1" selfTime="913" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.util.jar.JarFile" methodName="entries" methodSignature="()Ljava/util/Enumeration;" time="913" count="1" selfTime="913" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.util.Enumeration" methodName="hasMoreElements" methodSignature="()Z" time="568" count="181" selfTime="568" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.lang.String" methodName="endsWith" methodSignature="(Ljava/lang/String;)Z" time="251" count="180" selfTime="251" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.util.List" methodName="add" methodSignature="(Ljava/lang/Object;)Z" time="101" count="14" selfTime="101" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.net.URL" methodName="getProtocol" methodSignature="()Ljava/lang/String;" time="80" count="1" selfTime="80" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.lang.Class" methodName="getClassLoader" methodSignature="()Ljava/lang/ClassLoader;" time="13" count="1" selfTime="13" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.lang.String" methodName="equals" methodSignature="(Ljava/lang/Object;)Z" time="11" count="1" selfTime="11" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.util.ArrayList" methodName="&lt;init&gt;" methodSignature="()V" time="2" count="1" selfTime="2" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="defineCallback" methodSignature="()V" time="13050" count="1" selfTime="9698" lineNumber="-1" percent="0.0">
+          <node leaf="false" class="org.dacapo.harness.Callback" methodName="&lt;init&gt;" methodSignature="(Lorg/dacapo/harness/CommandLineArgs;)V" time="3290" count="1" selfTime="0" lineNumber="-1" percent="0.0">
+            <node leaf="true"/>
+          </node>
+          <node leaf="false" class="org.dacapo.harness.Callback" methodName="&lt;clinit&gt;" methodSignature="()V" time="56" count="1" selfTime="0" lineNumber="-1" percent="0.0">
+            <node leaf="true"/>
+          </node>
+          <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="hasOption" methodSignature="(Ljava/lang/String;)Z" time="4" count="1" selfTime="4" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="org.dacapo.harness.CommandLineArgs" methodName="getCallback" methodSignature="()Lorg/dacapo/harness/Callback;" time="2" count="1" selfTime="2" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="true" class="org.apache.commons.cli.CommandLineParser" methodName="parse" methodSignature="(Lorg/apache/commons/cli/Options;[Ljava/lang/String;)Lorg/apache/commons/cli/CommandLine;" time="5113" count="1" selfTime="5113" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="hasOption" methodSignature="(Ljava/lang/String;)Z" time="1555" count="5" selfTime="1555" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.util.List" methodName="iterator" methodSignature="()Ljava/util/Iterator;" time="940" count="1" selfTime="940" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="org.apache.commons.cli.Options" methodName="addOption" methodSignature="(Lorg/apache/commons/cli/Option;)Lorg/apache/commons/cli/Options;" time="294" count="45" selfTime="294" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="org.apache.commons.cli.Option" methodName="getDescription" methodSignature="()Ljava/lang/String;" time="44" count="23" selfTime="44" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.util.Iterator" methodName="next" methodSignature="()Ljava/lang/Object;" time="40" count="1" selfTime="40" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.util.List" methodName="contains" methodSignature="(Ljava/lang/Object;)Z" time="25" count="1" selfTime="25" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.util.Iterator" methodName="hasNext" methodSignature="()Z" time="24" count="2" selfTime="24" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.util.List" methodName="add" methodSignature="(Ljava/lang/Object;)Z" time="24" count="1" selfTime="24" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.util.List" methodName="isEmpty" methodSignature="()Z" time="21" count="2" selfTime="21" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.util.ArrayList" methodName="&lt;init&gt;" methodSignature="()V" time="15" count="1" selfTime="15" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="getArgList" methodSignature="()Ljava/util/List;" time="15" count="3" selfTime="15" lineNumber="-1" percent="0.0"/>
+      </node>
+      <node leaf="false" class="org.dacapo.harness.TestHarness" methodName="makeCleanScratch" methodSignature="(Ljava/io/File;)V" time="36699" count="1" selfTime="17" lineNumber="-1" percent="0.0">
+        <node leaf="false" class="org.dacapo.harness.TestHarness" methodName="rmdir" methodSignature="(Ljava/io/File;)V" time="36131" count="1" selfTime="88" lineNumber="-1" percent="0.0">
+          <node leaf="false" class="org.dacapo.harness.TestHarness" methodName="rmdir" methodSignature="(Ljava/io/File;)V" time="18527" count="1" selfTime="0" lineNumber="-1" percent="0.0">
+            <node leaf="true"/>
+          </node>
+          <node leaf="true" class="java.io.File" methodName="delete" methodSignature="()Z" time="12607" count="3" selfTime="12607" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.io.File" methodName="isDirectory" methodSignature="()Z" time="3018" count="3" selfTime="3018" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.io.File" methodName="list" methodSignature="()[Ljava/lang/String;" time="1760" count="1" selfTime="1760" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.io.File" methodName="&lt;init&gt;" methodSignature="(Ljava/io/File;Ljava/lang/String;)V" time="131" count="3" selfTime="131" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="true" class="java.io.File" methodName="mkdir" methodSignature="()Z" time="551" count="1" selfTime="551" lineNumber="-1" percent="0.0"/>
+      </node>
+      <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="&lt;clinit&gt;" methodSignature="()V" time="21134" count="1" selfTime="15607" lineNumber="-1" percent="0.0">
+        <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="makeOption" methodSignature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/apache/commons/cli/Option;" time="5101" count="23" selfTime="2522" lineNumber="-1" percent="0.0">
+          <node leaf="true" class="org.apache.commons.cli.Option" methodName="&lt;init&gt;" methodSignature="(Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V" time="2499" count="23" selfTime="2499" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="org.apache.commons.cli.Option" methodName="setValueSeparator" methodSignature="(C)V" time="45" count="11" selfTime="45" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="org.apache.commons.cli.Option" methodName="setArgName" methodSignature="(Ljava/lang/String;)V" time="35" count="11" selfTime="35" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="true" class="org.apache.commons.cli.Options" methodName="&lt;init&gt;" methodSignature="()V" time="188" count="2" selfTime="188" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.lang.Class" methodName="desiredAssertionStatus" methodSignature="()Z" time="176" count="1" selfTime="176" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="org.apache.commons.cli.PosixParser" methodName="&lt;init&gt;" methodSignature="()V" time="62" count="1" selfTime="62" lineNumber="-1" percent="0.0"/>
+      </node>
+      <node leaf="true" class="java.lang.ClassLoader" methodName="getResourceAsStream" methodSignature="(Ljava/lang/String;)Ljava/io/InputStream;" time="6299" count="1" selfTime="6299" lineNumber="-1" percent="0.0"/>
+      <node leaf="false" class="org.dacapo.harness.TestHarness" methodName="isValidSize" methodSignature="(Ljava/lang/String;)Z" time="210" count="1" selfTime="19" lineNumber="-1" percent="0.0">
+        <node leaf="false" class="org.dacapo.parser.Config" methodName="getSizes" methodSignature="()Ljava/util/Collection;" time="157" count="1" selfTime="4" lineNumber="-1" percent="0.0">
+          <node leaf="true" class="java.util.Collections" methodName="unmodifiableSet" methodSignature="(Ljava/util/Set;)Ljava/util/Set;" time="132" count="1" selfTime="132" lineNumber="-1" percent="0.0"/>
+          <node leaf="true" class="java.util.HashMap" methodName="keySet" methodSignature="()Ljava/util/Set;" time="21" count="1" selfTime="21" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="true" class="java.util.Collection" methodName="contains" methodSignature="(Ljava/lang/Object;)Z" time="34" count="1" selfTime="34" lineNumber="-1" percent="0.0"/>
+      </node>
+      <node leaf="true" class="java.util.Locale" methodName="&lt;init&gt;" methodSignature="(Ljava/lang/String;Ljava/lang/String;)V" time="185" count="1" selfTime="185" lineNumber="-1" percent="0.0"/>
+      <node leaf="false" class="org.dacapo.harness.Benchmark" methodName="setCommandLineOptions" methodSignature="(Lorg/dacapo/harness/CommandLineArgs;)V" time="136" count="1" selfTime="60" lineNumber="-1" percent="0.0">
+        <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getValidationReport" methodSignature="()Ljava/lang/String;" time="29" count="1" selfTime="0" lineNumber="-1" percent="0.0">
+          <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="getOptionValue" methodSignature="(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" time="29" count="1" selfTime="29" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getSilent" methodSignature="()Z" time="28" count="1" selfTime="10" lineNumber="-1" percent="0.0">
+          <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getVerbose" methodSignature="()Z" time="18" count="1" selfTime="5" lineNumber="-1" percent="0.0">
+            <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="hasOption" methodSignature="(Ljava/lang/String;)Z" time="13" count="1" selfTime="13" lineNumber="-1" percent="0.0"/>
+          </node>
+        </node>
+        <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getPreserve" methodSignature="()Z" time="6" count="1" selfTime="2" lineNumber="-1" percent="0.0">
+          <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="hasOption" methodSignature="(Ljava/lang/String;)Z" time="4" count="1" selfTime="4" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getValidateOutput" methodSignature="()Z" time="5" count="1" selfTime="2" lineNumber="-1" percent="0.0">
+          <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="hasOption" methodSignature="(Ljava/lang/String;)Z" time="3" count="1" selfTime="3" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getValidate" methodSignature="()Z" time="4" count="1" selfTime="1" lineNumber="-1" percent="0.0">
+          <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="hasOption" methodSignature="(Ljava/lang/String;)Z" time="3" count="1" selfTime="3" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getPreIterationGC" methodSignature="()Z" time="4" count="1" selfTime="2" lineNumber="-1" percent="0.0">
+          <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="hasOption" methodSignature="(Ljava/lang/String;)Z" time="2" count="1" selfTime="2" lineNumber="-1" percent="0.0"/>
+        </node>
+      </node>
+      <node leaf="true" class="java.lang.Integer" methodName="parseInt" methodSignature="(Ljava/lang/String;)I" time="109" count="2" selfTime="109" lineNumber="-1" percent="0.0"/>
+      <node leaf="true" class="java.io.File" methodName="&lt;init&gt;" methodSignature="(Ljava/lang/String;)V" time="64" count="1" selfTime="64" lineNumber="-1" percent="0.0"/>
+      <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getScratchDir" methodSignature="()Ljava/lang/String;" time="54" count="1" selfTime="13" lineNumber="-1" percent="0.0">
+        <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="getOptionValue" methodSignature="(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" time="41" count="1" selfTime="41" lineNumber="-1" percent="0.0"/>
+      </node>
+      <node leaf="true" class="org.dacapo.harness.Benchmark" methodName="&lt;clinit&gt;" methodSignature="()V" time="54" count="1" selfTime="54" lineNumber="-1" percent="0.0"/>
+      <node leaf="true" class="java.util.Locale" methodName="setDefault" methodSignature="(Ljava/util/Locale;)V" time="37" count="1" selfTime="37" lineNumber="-1" percent="0.0"/>
+      <node leaf="true" class="java.lang.System" methodName="setProperty" methodSignature="(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" time="35" count="1" selfTime="35" lineNumber="-1" percent="0.0"/>
+      <node leaf="false" class="org.dacapo.parser.Config" methodName="getThreadLimit" methodSignature="(Ljava/lang/String;)I" time="26" count="1" selfTime="15" lineNumber="-1" percent="0.0">
+        <node leaf="false" class="org.dacapo.parser.Config" methodName="getSize" methodSignature="(Ljava/lang/String;)Lorg/dacapo/parser/Config$Size;" time="10" count="1" selfTime="3" lineNumber="-1" percent="0.0">
+          <node leaf="true" class="java.util.HashMap" methodName="get" methodSignature="(Ljava/lang/Object;)Ljava/lang/Object;" time="7" count="1" selfTime="7" lineNumber="-1" percent="0.0"/>
+        </node>
+        <node leaf="true" class="org.dacapo.parser.Config$Size" methodName="getThreadLimit" methodSignature="()I" time="1" count="1" selfTime="1" lineNumber="-1" percent="0.0"/>
+      </node>
+      <node leaf="true" class="java.lang.StringBuilder" methodName="append" methodSignature="(Ljava/lang/String;)Ljava/lang/StringBuilder;" time="24" count="3" selfTime="24" lineNumber="-1" percent="0.0"/>
+      <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getSize" methodSignature="()Ljava/lang/String;" time="22" count="1" selfTime="10" lineNumber="-1" percent="0.0">
+        <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="getOptionValue" methodSignature="(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" time="12" count="1" selfTime="12" lineNumber="-1" percent="0.0"/>
+      </node>
+      <node leaf="false" class="org.dacapo.harness.TestHarness" methodName="isValidThreadCount" methodSignature="(Ljava/lang/String;)Z" time="21" count="2" selfTime="4" lineNumber="-1" percent="0.0">
+        <node leaf="false" class="org.dacapo.parser.Config" methodName="getThreadLimit" methodSignature="(Ljava/lang/String;)I" time="17" count="2" selfTime="8" lineNumber="-1" percent="0.0">
+          <node leaf="false" class="org.dacapo.parser.Config" methodName="getSize" methodSignature="(Ljava/lang/String;)Lorg/dacapo/parser/Config$Size;" time="7" count="2" selfTime="4" lineNumber="-1" percent="0.0">
+            <node leaf="true" class="java.util.HashMap" methodName="get" methodSignature="(Ljava/lang/Object;)Ljava/lang/Object;" time="3" count="2" selfTime="3" lineNumber="-1" percent="0.0"/>
+          </node>
+          <node leaf="true" class="org.dacapo.parser.Config$Size" methodName="getThreadLimit" methodSignature="()I" time="2" count="2" selfTime="2" lineNumber="-1" percent="0.0"/>
+        </node>
+      </node>
+      <node leaf="true" class="org.dacapo.parser.Config" methodName="&lt;clinit&gt;" methodSignature="()V" time="20" count="1" selfTime="20" lineNumber="-1" percent="0.0"/>
+      <node leaf="true" class="java.lang.Iterable" methodName="iterator" methodSignature="()Ljava/util/Iterator;" time="20" count="1" selfTime="20" lineNumber="-1" percent="0.0"/>
+      <node leaf="true" class="java.lang.StringBuilder" methodName="&lt;init&gt;" methodSignature="()V" time="19" count="1" selfTime="19" lineNumber="-1" percent="0.0"/>
+      <node leaf="true" class="java.lang.Class" methodName="getClassLoader" methodSignature="()Ljava/lang/ClassLoader;" time="18" count="1" selfTime="18" lineNumber="-1" percent="0.0"/>
+      <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getCnfOverride" methodSignature="()Ljava/lang/String;" time="15" count="1" selfTime="3" lineNumber="-1" percent="0.0">
+        <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="getOptionValue" methodSignature="(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" time="12" count="1" selfTime="12" lineNumber="-1" percent="0.0"/>
+      </node>
+      <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getInformation" methodSignature="()Z" time="12" count="1" selfTime="3" lineNumber="-1" percent="0.0">
+        <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="hasOption" methodSignature="(Ljava/lang/String;)Z" time="9" count="1" selfTime="9" lineNumber="-1" percent="0.0"/>
+      </node>
+      <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getThreadCount" methodSignature="()Ljava/lang/String;" time="11" count="1" selfTime="8" lineNumber="-1" percent="0.0">
+        <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="getOptionValue" methodSignature="(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" time="3" count="1" selfTime="3" lineNumber="-1" percent="0.0"/>
+      </node>
+      <node leaf="true" class="java.util.Iterator" methodName="hasNext" methodSignature="()Z" time="10" count="1" selfTime="10" lineNumber="-1" percent="0.0"/>
+      <node leaf="true" class="java.lang.StringBuilder" methodName="toString" methodSignature="()Ljava/lang/String;" time="10" count="1" selfTime="10" lineNumber="-1" percent="0.0"/>
+      <node leaf="true" class="java.util.Iterator" methodName="next" methodSignature="()Ljava/lang/Object;" time="9" count="1" selfTime="9" lineNumber="-1" percent="0.0"/>
+      <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getThreadFactor" methodSignature="()Ljava/lang/String;" time="8" count="1" selfTime="4" lineNumber="-1" percent="0.0">
+        <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="getOptionValue" methodSignature="(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" time="4" count="1" selfTime="4" lineNumber="-1" percent="0.0"/>
+      </node>
+      <node leaf="false" class="org.dacapo.harness.CommandLineArgs" methodName="getVerbose" methodSignature="()Z" time="6" count="1" selfTime="3" lineNumber="-1" percent="0.0">
+        <node leaf="true" class="org.apache.commons.cli.CommandLine" methodName="hasOption" methodSignature="(Ljava/lang/String;)Z" time="3" count="1" selfTime="3" lineNumber="-1" percent="0.0"/>
+      </node>
+      <node leaf="true" class="org.dacapo.parser.Config" methodName="setThreadCountOverride" methodSignature="(I)V" time="5" count="1" selfTime="5" lineNumber="-1" percent="0.0"/>
+      <node leaf="true" class="org.dacapo.harness.CommandLineArgs" methodName="benchmarks" methodSignature="()Ljava/lang/Iterable;" time="3" count="1" selfTime="3" lineNumber="-1" percent="0.0"/>
+      <node leaf="true" class="org.dacapo.harness.TestHarness" methodName="dump" methodSignature="(Z)V" time="3" count="1" selfTime="3" lineNumber="-1" percent="0.0"/>
+    </node>
+    <node leaf="false" class="org.dacapo.harness.TestHarness" methodName="&lt;clinit&gt;" methodSignature="()V" time="102267" count="1" selfTime="40" lineNumber="-1" percent="0.0">
+      <node leaf="false" class="org.dacapo.harness.TestHarness" methodName="twoDecimalPlaces" methodSignature="()Ljava/text/DecimalFormat;" time="102227" count="1" selfTime="8565" lineNumber="-1" percent="0.0">
+        <node leaf="true" class="java.text.DecimalFormat" methodName="&lt;init&gt;" methodSignature="()V" time="93632" count="1" selfTime="93632" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.text.DecimalFormat" methodName="setMaximumFractionDigits" methodSignature="(I)V" time="15" count="1" selfTime="15" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.text.DecimalFormat" methodName="setMinimumFractionDigits" methodSignature="(I)V" time="9" count="1" selfTime="9" lineNumber="-1" percent="0.0"/>
+        <node leaf="true" class="java.text.DecimalFormat" methodName="setGroupingUsed" methodSignature="(Z)V" time="6" count="1" selfTime="6" lineNumber="-1" percent="0.0"/>
+      </node>
+    </node>
+  </node>
+</tree>
