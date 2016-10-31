@@ -18,6 +18,7 @@ public class Main {
 				//reduce recursive path
 				//calculate minCPD
 				//calculate height
+				//for( method with height & CPD >4)
 				//calculate induced cost
 				//store result
 
