@@ -13,6 +13,7 @@ public class Main {
 		File[] xmlFiles = folder.listFiles();
 		for (File xml : xmlFiles){
 			if(xml.isFile()){
+				System.out.println(xml.getName());
 				XMLParser p = new XMLParser();
 				p.parse(xml);
 				//reduce recursive path

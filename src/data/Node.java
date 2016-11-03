@@ -10,10 +10,10 @@ public class Node {
 	Node adjustedParent;
 	private Method method;
 	private Node parent;
-	private Node childNode;
+	//private Node childNode;
 	private ArrayList<Node> children;
 	private ArrayList<Node> adjustedChildern;
-//leaf, classname, signature?
+    //leaf, classname, signature?
 	public String getLeaf() {
 		return leaf;
 	}
@@ -57,7 +57,7 @@ public class Node {
 		adjustedParent= null;
 		children = new ArrayList<Node>();
 		//adjustedChildern =new ArrayList<Node>();
-		setCost(0);
+		//setCost(0);
 		setHeight(0);
 		setInduced(0);
 	}
