@@ -121,10 +121,10 @@ public class Node {
 		this.method = method;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "leaf :"+this.getLeaf() + "class: "+this.className+ "methodName: "+this.getMethodName();
-	}
+	}*/
 
 	public void addChildNode(Node childNode) {
 		this.children.add(childNode);
