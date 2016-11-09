@@ -25,7 +25,8 @@ public class XMLParser {
 	
 	
 	org.w3c.dom.Node numberAttr;
-	public void parse(File xmlFile){
+	public Tree parse(File xmlFile){
+		//Tree ccTree;
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder;
@@ -45,7 +46,8 @@ public class XMLParser {
 			        }  
 			    }
 			    addChildren();
-				createTree();
+				CCT = createTree();
+
 			}
 			
 			
@@ -53,6 +55,7 @@ public class XMLParser {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return CCT;
 	}
 	
 	
@@ -119,7 +122,7 @@ public class XMLParser {
 	 * create CCT (tree class)
 	 * @return Tree
 	 */
-	private void createTree(){
+	private Tree createTree(){
 		Node root = null;
 		for (Node node: nodeDictionary.values())
 		{
@@ -139,7 +142,8 @@ public class XMLParser {
 			for(int i = 0; i<node.getChildren().size(); i++)
 				System.out.println(" node's children : "+ node.getChildren().get(i).getMethod().getLabel());
 		}
-		CCT = new Tree(root, methodList);
-		System.out.println("CCT created");
+		Tree ccTree = new Tree(root, methodList);
+		return ccTree;
+
 	}
 }

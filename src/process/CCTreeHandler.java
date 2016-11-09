@@ -1,11 +1,13 @@
 package process;
 
 import data.Node;
+import data.Method;
 
 public class CCTreeHandler {
 
     public void reduceRecursivePath(Node node){
         Node adjustedParent = findAdjustedParent(node);
+        node.setAdjustedParent(adjustedParent);
         node.getAdjustedParent().getAdjustedChildern().add(node);
 
         for(Node childNode : node.getChildren()){
@@ -46,5 +48,45 @@ public class CCTreeHandler {
             return currentParent;
         }
         return match1.getAdjustedParent();
+    }
+
+    public void minCPD(Method m){
+        m.setMinCPD(Integer.MAX_VALUE);
+        Node n = m.getNodes().get(0);
+        n = findAdjustedParent(n);
+        //n= n.adjustedParent;
+        while(n!= null){
+            int dist= CPD(n.getMethod(), m);
+            if(dist < m.getMinCPD()){
+                m.setMinCPD(dist);
+                m= n.getMethod();
+            }
+            n=n.getParent();
+        }
+    }
+
+    private int CPD(Method p, Method m) {
+         int cpd=0;
+        for( Node n : m.getNodes()){
+            int dist= distance(p,n);
+            if(dist> cpd){
+                cpd=dist;
+            }
+        }
+        return cpd;
+    }
+    private int distance(Method m, Node n) {
+        int dist=0;
+        while ( true){
+            ++dist;
+            n= n.getAdjustedParent();
+            if( n== null ){
+                return Integer.MAX_VALUE;
+            }
+            if (n.getMethod() == m){
+                return dist;
+            }
+        }
+
     }
 }
