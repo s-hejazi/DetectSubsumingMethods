@@ -19,6 +19,7 @@ public class Main {
 		File[] xmlFiles = folder.listFiles();
 		for (File xml : xmlFiles){
 			if(xml.isFile()){
+				System.out.println(xml.getName());
 				XMLParser p = new XMLParser();
 				Tree ccTree = p.parse(xml);
 				List<Node> listOfNodes = new ArrayList<>();

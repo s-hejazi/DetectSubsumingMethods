@@ -68,7 +68,6 @@ public class XMLParser {
 		if (element != null) 
 		{
 			Node node = new Node();	
-			//cost = time * invoked
 			//Create and Add method only if it has not been parsed before	
 			// METHOD WITH SAME NAME??
 			String methodName = element.getAttribute("methodName");
@@ -138,7 +137,7 @@ public class XMLParser {
 			System.out.println(node.getMethod().getLabel());
 			if(node.getParent()!= null)
 			System.out.println("node's parent: " + node.getParent().getMethod().getLabel() );
-			System.out.println(node.getCost());
+			System.out.println("cost : " + node.getCost());
 			for(int i = 0; i<node.getChildren().size(); i++)
 				System.out.println(" node's children : "+ node.getChildren().get(i).getMethod().getLabel());
 		}
