@@ -21,7 +21,9 @@ public class Main {
 			if(xml.isFile()){
 				System.out.println(xml.getName());
 				XMLParser p = new XMLParser();
-				Tree ccTree = p.parse(xml);
+			p.parse(xml);
+
+		/*	Tree ccTree = p.parse(xml);
 				List<Node> listOfNodes = new ArrayList<>();
 				for(Method treeMethod : ccTree.getMethods()){
 					listOfNodes.addAll(treeMethod.getNodes());
@@ -31,7 +33,7 @@ public class Main {
 				}
 				for(Method treeMethod : ccTree.getMethods()) {
 					treeHandler.minCPD(treeMethod);
-				}
+				}*/
 				//reduce recursive path
 				//calculate minCPD
 				//calculate height
