@@ -22,10 +22,10 @@ public class XMLParser {
 	private ArrayList<Method> methodList = new ArrayList <Method>();
 	private Map <String, Node> nodeDictionary = new HashMap();
 	Tree CCT;
-	
+	CCTreeHandler ccthandler = new CCTreeHandler();
 	
 	org.w3c.dom.Node numberAttr;
-	public void parse(File xmlFile){
+	public Tree parse(File xmlFile){
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder;
@@ -46,6 +46,22 @@ public class XMLParser {
 			    }
 			    addChildren();
 				createTree();
+			/*	for(Node n: nodeDictionary.values()){
+					treeHandler.reduceRecursivePath(n);
+				}
+				for(Method m : methodList){
+				treeHandler.minCPD(m);
+				}
+				for(Node n: nodeDictionary.values()){
+					treeHandler.calculateHeight(n);
+				}
+				for(Node n: nodeDictionary.values()){
+					treeHandler.calculateInducedCost(n);
+				}
+				
+				for(Node n: nodeDictionary.values()){
+					System.out.println("number of all subsuming nodes" + treeHandler.subcount);
+				}*/
 			}
 			
 			
@@ -53,6 +69,7 @@ public class XMLParser {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return CCT;
 	}
 	
 	
@@ -89,6 +106,7 @@ public class XMLParser {
 				node.setParent(nodeDictionary.get(parentKey));
 			}
 			nodeDictionary.put((String) element.getUserData("count"), node);
+			
 
 	}
 	}
@@ -131,12 +149,12 @@ public class XMLParser {
 		for (Node node: nodeDictionary.values())
 		{
 			
-			System.out.println(node.getMethod().getLabel());
-			if(node.getParent()!= null)
-			System.out.println("node's parent: " + node.getParent().getMethod().getLabel() );
-			System.out.println("cost : " + node.getCost());
-			for(int i = 0; i<node.getChildren().size(); i++)
-				System.out.println(" node's children : "+ node.getChildren().get(i).getMethod().getLabel());
+		//	System.out.println(node.getMethod().getLabel());
+		//	if(node.getParent()!= null)
+		//	System.out.println("node's parent: " + node.getParent().getMethod().getLabel() );
+		//	System.out.println("cost : " + node.getCost());
+		//	for(int i = 0; i<node.getChildren().size(); i++)
+		//		System.out.println(" node's children : "+ node.getChildren().get(i).getMethod().getLabel());
 		}
 		CCT = new Tree(root, methodList);
 		System.out.println("CCT created");

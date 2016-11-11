@@ -37,6 +37,9 @@ public class Method {
 		this.label = label;
 	}
 
+	public int getInduced(){
+		return induced;
+	}
 	public void setInduced(int induced) {
 		this.induced= induced;
 	}
@@ -45,6 +48,9 @@ public class Method {
 		this.minCPD= minCPD;
 	}
 
+	public int getMaxHeight(){
+		return maxHeight;
+	}
 	public void setMaxheight(int maxHeight) {
 		this.maxHeight= maxHeight;
 	}
