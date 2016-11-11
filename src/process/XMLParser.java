@@ -22,7 +22,7 @@ public class XMLParser {
 	private ArrayList<Method> methodList = new ArrayList <Method>();
 	private Map <String, Node> nodeDictionary = new HashMap();
 	Tree CCT;
-	CCTreeHandler ccthandler = new CCTreeHandler();
+	//CCTreeHandler ccthandler = new CCTreeHandler();
 	
 	org.w3c.dom.Node numberAttr;
 	public Tree parse(File xmlFile){
@@ -46,22 +46,7 @@ public class XMLParser {
 			    }
 			    addChildren();
 				createTree();
-			/*	for(Node n: nodeDictionary.values()){
-					treeHandler.reduceRecursivePath(n);
-				}
-				for(Method m : methodList){
-				treeHandler.minCPD(m);
-				}
-				for(Node n: nodeDictionary.values()){
-					treeHandler.calculateHeight(n);
-				}
-				for(Node n: nodeDictionary.values()){
-					treeHandler.calculateInducedCost(n);
-				}
-				
-				for(Node n: nodeDictionary.values()){
-					System.out.println("number of all subsuming nodes" + treeHandler.subcount);
-				}*/
+			
 			}
 			
 			
@@ -85,6 +70,7 @@ public class XMLParser {
 			//Create and Add method only if it has not been parsed before	
 			// METHOD WITH SAME NAME??
 			String methodName = element.getAttribute("methodName");
+			//////////////////////
 			int methodCost = Integer.parseInt(element.getAttribute("time"));
 			node.setCost(methodCost);
 			Method method = null;
@@ -118,19 +104,20 @@ public class XMLParser {
 		for (Node node1: nodeDictionary.values())
 		{
 			ArrayList<Node> childNodes = new ArrayList<Node>();
-			if (node1.getParent() != null) 
-			{
+
 				for (Node node2: nodeDictionary.values())
 				{
-					if (node2.getParent() == node1) 
+					
+					if (node2.getParent() != null && node2.getParent() == node1) 
 					{
 						childNodes.add(node2);
 					}
 				}
+				node1.setChildren(childNodes);
 			}
-			node1.setChildren(childNodes);
+			
 		}
-	}
+
 	
 	/**
 	 * create CCT (tree class)
@@ -146,7 +133,7 @@ public class XMLParser {
 				break;
 			}
 		}
-		for (Node node: nodeDictionary.values())
+		/*for (Node node: nodeDictionary.values())
 		{
 			
 		//	System.out.println(node.getMethod().getLabel());
@@ -155,8 +142,9 @@ public class XMLParser {
 		//	System.out.println("cost : " + node.getCost());
 		//	for(int i = 0; i<node.getChildren().size(); i++)
 		//		System.out.println(" node's children : "+ node.getChildren().get(i).getMethod().getLabel());
-		}
+		}*/
+		System.out.println("Total node count: " + nodeDictionary.size());
 		CCT = new Tree(root, methodList);
-		System.out.println("CCT created");
+		//System.out.println("CCT created");
 	}
 }

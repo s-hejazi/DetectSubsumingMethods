@@ -56,7 +56,7 @@ public class Node {
 		parent = null;
 		adjustedParent= null;
 		children = new ArrayList<Node>();
-		//adjustedChildern =new ArrayList<Node>();
+		adjustedChildern =new ArrayList<Node>();
 		//setCost(0);
 		setHeight(0);
 		setInduced(0);
@@ -101,7 +101,9 @@ public class Node {
 	public void setAdjustedChildern(ArrayList<Node> adjustedChildern) {
 		this.adjustedChildern = adjustedChildern;
 	}
-	
+	public void addAdjustedChildern(Node node) {
+		this.adjustedChildern.add(node);
+	}
 	public Node getParent() {
 		return parent;
 	}

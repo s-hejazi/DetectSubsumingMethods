@@ -1,26 +1,24 @@
 package process;
 
-import java.util.ArrayList;
-import data.Node;
 import data.Method;
+import data.Node;
 
 public class CCTreeHandler {
 
-	int subcount = 0;
+	public int methodCount = 0;
+	public int nodeCount = 0;
 
 	public void reduceRecursivePath(Node node) {
-		//Node adjustedParent = findAdjustedParent(node);
+
 		node.setAdjustedParent(findAdjustedParent(node));
 		if(node.getAdjustedParent() != null)
-		node.getAdjustedParent().getAdjustedChildern().add(node);
-	//	ArrayList<Node> tempnodechild = new ArrayList<Node>();
-	//	tempnodechild.add(node);
-		//node.getAdjustedParent().setAdjustedChildern(tempnodechild);
+		node.getAdjustedParent().addAdjustedChildern(node);
 
 		for (Node childNode : node.getChildren()) {
 			reduceRecursivePath(childNode);
 		}
-	}
+		}
+	
 
 	public Node findAdjustedParent(Node currentNode) {
 		Node match1 = null;
@@ -34,8 +32,9 @@ public class CCTreeHandler {
 				} else {
 					match2 = currentParent;
 				}
-				currentParent = currentParent.getAdjustedParent();
 			}
+				currentParent = currentParent.getAdjustedParent();
+			
 		}
 
 		if (match1 == null || match2 == null) {
@@ -60,13 +59,12 @@ public class CCTreeHandler {
 	public void minCPD(Method m) {
 		m.setMinCPD(Integer.MAX_VALUE);
 		Node n = m.getNodes().get(0);
-		n = findAdjustedParent(n);
-		// n= n.adjustedParent;
+		n = n.getAdjustedParent();
 		while (n != null) {
 			int dist = CPD(n.getMethod(), m);
 			if (dist < m.getMinCPD()) {
 				m.setMinCPD(dist);
-				m = n.getMethod();
+				//m = n.getMethod();
 			}
 			n = n.getParent();
 		}
@@ -115,17 +113,23 @@ public class CCTreeHandler {
 		n.setInduced(n.getCost());
 		for (Node c : n.getChildren()) {
 			calculateInducedCost(c);
-			if (isSubsumedMethod(c.getMethod())) {
+			if (isSubsumedMethod(c)) {
 				n.setInduced(n.getInduced() + c.getInduced());
 			}
 		}
 		n.getMethod().setInduced(n.getMethod().getInduced() + n.getInduced());
 	}
 
-	private boolean isSubsumedMethod(Method method) {
-		if (method.getMinCPD() <= 4 && method.getMaxHeight() <= 4)
-			return true;
-		subcount++;
-		return false;
+	private boolean isSubsumedMethod(Node node) {
+		///height and minimum common parent distance
+		///greater than four as subsuming methods. others, subsumed 
+		///check
+		if (node.getMethod().getMinCPD() > 4 && node.getHeight() > 4){
+			methodCount++;
+			nodeCount += node.getMethod().getNodes().size();
+			return false;
+		}
+		else //is subsumed
+		return true;
 	}
 }

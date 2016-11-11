@@ -13,7 +13,7 @@ public class Method {
 		this.setLabel(name);
 		nodes = new ArrayList<Node>();
 		setMaxheight(0);
-		setMinCPD(0);
+		//setMinCPD(0);
 		setInduced(0);
 	}
 
