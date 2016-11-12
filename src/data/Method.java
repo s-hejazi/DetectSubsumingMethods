@@ -7,12 +7,14 @@ public class Method {
 	int maxHeight;
 	int minCPD;
 	int induced;
+	int count;
 	private String label;
 
 	public Method(String name){
 		this.setLabel(name);
 		nodes = new ArrayList<Node>();
 		setMaxheight(0);
+		count = 0;
 		//setMinCPD(0);
 		setInduced(0);
 	}
@@ -20,7 +22,17 @@ public class Method {
 	public int getMinCPD() {
 		return minCPD;
 	}
-
+	
+	public int getCount(){
+		return count;
+	}
+	
+/*	public void setCount(int c){
+		 count = c;
+	}*/
+	public void addCount(int c){
+		 count += c;
+	}
 	public ArrayList<Node> getNodes() {
 		return nodes;
 	}

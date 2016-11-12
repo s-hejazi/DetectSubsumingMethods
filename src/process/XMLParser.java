@@ -72,6 +72,7 @@ public class XMLParser {
 			String methodName = element.getAttribute("methodName");
 			//////////////////////
 			int methodCost = Integer.parseInt(element.getAttribute("time"));
+			
 			node.setCost(methodCost);
 			Method method = null;
 			for(Method m: methodList)
@@ -82,7 +83,10 @@ public class XMLParser {
 			if(method == null){
 			method = new Method(methodName);
 			methodList.add(method);
-			}			
+			}	
+			/////////////////???
+			//int methodCount = Integer.parseInt(element.getAttribute("count"));
+			//method.addCount(1);
 			method.addNodes(node);
 			//add isNode method and parent
 			node.setMethod(method);	

@@ -125,6 +125,7 @@ public class CCTreeHandler {
 		///greater than four as subsuming methods. others, subsumed 
 		///check
 		if (node.getMethod().getMinCPD() > 4 && node.getHeight() > 4){
+			//methodCount+= node.getMethod().getCount();
 			methodCount++;
 			nodeCount += node.getMethod().getNodes().size();
 			return false;
