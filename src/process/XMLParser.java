@@ -25,6 +25,7 @@ public class XMLParser {
 	//CCTreeHandler ccthandler = new CCTreeHandler();
 	
 	org.w3c.dom.Node numberAttr;
+	
 	public Tree parse(File xmlFile){
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -71,11 +72,13 @@ public class XMLParser {
 			//Create and Add method only if it has not been parsed before	
 			// METHOD WITH SAME NAME??
 			String methodName = element.getAttribute("methodName");
+			String selfTime = element.getAttribute("selfTime");
 			//////////////////////
 			if(element.hasAttribute("time")){
 					methodCost = Integer.parseInt(element.getAttribute("time"));
 			}
 			node.setCost(methodCost);
+			node.setSelfTime(Integer.parseInt(selfTime));
 			Method method = null;
 			for(Method m: methodList)
 			if(m.getLabel().equals(methodName)){

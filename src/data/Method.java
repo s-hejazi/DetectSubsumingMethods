@@ -9,6 +9,7 @@ public class Method {
 	int induced;
 	int count;
 	private String label;
+	private int exclusiveCostOfAllNodes;
 
 	public Method(String name){
 		this.setLabel(name);
@@ -65,6 +66,17 @@ public class Method {
 	}
 	public void setMaxheight(int maxHeight) {
 		this.maxHeight= maxHeight;
+	}
+
+	public void setExclusiveCost(int totalExclusiveCost) {
+		// TODO Auto-generated method stub
+		this.exclusiveCostOfAllNodes = totalExclusiveCost;
+		
+	}
+
+	public Integer getExclusiveCost() {
+		// TODO Auto-generated method stub
+		return this.exclusiveCostOfAllNodes;
 	}
 
 }

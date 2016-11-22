@@ -6,7 +6,9 @@ import data.Tree;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
 
@@ -30,20 +32,23 @@ public class Main {
 		
 		for(Tree CCT : cctTreeList){		    	
 			    
-			List<Node> listOfNodes = new ArrayList<>();
-			
-			for(Method treeMethod : CCT.getMethods()){
-				listOfNodes.addAll(treeMethod.getNodes());
-			}
+			List<Node> listOfNodes = new ArrayList<>();			
 			treeHandler = new CCTreeHandler();			
 			treeHandler.reduceRecursivePath(CCT.getRoot());
+			Map<String, Integer> methodNameExclusiveCost = new HashMap<String, Integer>();
 			
-			for(Method treeMethod : CCT.getMethods()) {					
+			for(Method treeMethod : CCT.getMethods()) {	
+				listOfNodes.addAll(treeMethod.getNodes());
 				treeHandler.minCPD(treeMethod);
-			}
-			
+				
+				int methodCount = treeMethod.getCount();
+				int totalExclusiveCost = treeHandler.calculateCountNodeSelfTime(methodCount, listOfNodes);
+				treeMethod.setExclusiveCost(totalExclusiveCost);
+				methodNameExclusiveCost.put(treeMethod.getLabel(), treeMethod.getExclusiveCost());
+			}			
 			treeHandler.calculateHeight(CCT.getRoot());
 			treeHandler.calculateInducedCost(CCT.getRoot());
+			treeHandler.rankTopTenMethodsByExclusiveCost(methodNameExclusiveCost);
 
 			System.out.println("Total Method count: "+ CCT.getMethods().size());
 			System.out.println("Subsuming method count: "+treeHandler.methodCount);

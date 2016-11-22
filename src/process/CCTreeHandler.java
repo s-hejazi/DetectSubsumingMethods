@@ -1,5 +1,12 @@
 package process;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
 import data.Method;
 import data.Node;
 
@@ -7,6 +14,7 @@ public class CCTreeHandler {
 
 	public int methodCount = 0;
 	public int nodeCount = 0;
+	private static int thresholdCPD = 4;
 
 	public void reduceRecursivePath(Node node) {
 
@@ -124,7 +132,7 @@ public class CCTreeHandler {
 		///height and minimum common parent distance
 		///greater than four as subsuming methods. others, subsumed 
 		///check
-		if (node.getMethod().getMinCPD() > 4 && node.getHeight() > 4){
+		if (node.getMethod().getMinCPD() > thresholdCPD && node.getHeight() > thresholdCPD){
 			//methodCount+= node.getMethod().getCount();
 			methodCount++;
 			nodeCount += node.getMethod().getNodes().size();
@@ -132,5 +140,28 @@ public class CCTreeHandler {
 		}
 		else //is subsumed
 		return true;
+	}
+
+
+	public int calculateCountNodeSelfTime(int methodCountValue, List<Node> listOfNodes) {
+		int exclusiveCost = 0; 
+		for(Node currentNode : listOfNodes){
+			int nodeSelfTime = currentNode.getSelfTime();			
+			exclusiveCost += nodeSelfTime * methodCountValue;
+		}
+		return exclusiveCost;
+	
+	}
+
+
+	public List<Integer> rankTopTenMethodsByExclusiveCost(Map<String, Integer> methodNameExclusiveCost) {
+		// TODO Auto-generated method stub
+		List<Integer> exclusiveCost = (List<Integer>) methodNameExclusiveCost.values();
+		Collections.reverse(exclusiveCost);
+		List<Integer> topTenList = exclusiveCost.subList(0, 9);
+		
+		return topTenList;
+		
+		
 	}
 }
