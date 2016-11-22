@@ -64,6 +64,7 @@ public class XMLParser {
 	 */
 	private void addNodeInfo(Element element){
 		//CHECK IF EXISTS?
+		int methodCost = 0;
 		if (element != null) 
 		{
 			Node node = new Node();	
@@ -71,8 +72,9 @@ public class XMLParser {
 			// METHOD WITH SAME NAME??
 			String methodName = element.getAttribute("methodName");
 			//////////////////////
-			int methodCost = Integer.parseInt(element.getAttribute("time"));
-			
+			if(element.hasAttribute("time")){
+					methodCost = Integer.parseInt(element.getAttribute("time"));
+			}
 			node.setCost(methodCost);
 			Method method = null;
 			for(Method m: methodList)
