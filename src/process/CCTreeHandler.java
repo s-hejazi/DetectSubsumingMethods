@@ -158,8 +158,7 @@ public class CCTreeHandler {
 		// TODO Auto-generated method stub
 		List<Integer> exclusiveCost = (List<Integer>) methodNameExclusiveCost.values();
 		Collections.reverse(exclusiveCost);
-		List<Integer> topTenList = exclusiveCost.subList(0, 9);
-		
+		List<Integer> topTenList = exclusiveCost.subList(0, 9);		
 		return topTenList;
 		
 		
