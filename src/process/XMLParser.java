@@ -22,11 +22,11 @@ public class XMLParser {
 	private ArrayList<Method> methodList = new ArrayList <Method>();
 	private Map <String, Node> nodeDictionary = new HashMap();
 	Tree CCT;
-	
+	//CCTreeHandler ccthandler = new CCTreeHandler();
 	
 	org.w3c.dom.Node numberAttr;
+	
 	public Tree parse(File xmlFile){
-		//Tree ccTree;
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder;
@@ -46,8 +46,8 @@ public class XMLParser {
 			        }  
 			    }
 			    addChildren();
-				CCT = createTree();
-
+				createTree();
+			
 			}
 			
 			
@@ -65,14 +65,20 @@ public class XMLParser {
 	 */
 	private void addNodeInfo(Element element){
 		//CHECK IF EXISTS?
+		int methodCost = 0;
 		if (element != null) 
 		{
 			Node node = new Node();	
 			//Create and Add method only if it has not been parsed before	
 			// METHOD WITH SAME NAME??
 			String methodName = element.getAttribute("methodName");
-			int methodCost = Integer.parseInt(element.getAttribute("time"));
+			String selfTime = element.getAttribute("selfTime");
+			//////////////////////
+			if(element.hasAttribute("time")){
+					methodCost = Integer.parseInt(element.getAttribute("time"));
+			}
 			node.setCost(methodCost);
+			node.setSelfTime(Integer.parseInt(selfTime));
 			Method method = null;
 			for(Method m: methodList)
 			if(m.getLabel().equals(methodName)){
@@ -82,7 +88,10 @@ public class XMLParser {
 			if(method == null){
 			method = new Method(methodName);
 			methodList.add(method);
-			}			
+			}	
+			/////////////////???
+			//int methodCount = Integer.parseInt(element.getAttribute("count"));
+			//method.addCount(1);
 			method.addNodes(node);
 			//add isNode method and parent
 			node.setMethod(method);	
@@ -92,6 +101,7 @@ public class XMLParser {
 				node.setParent(nodeDictionary.get(parentKey));
 			}
 			nodeDictionary.put((String) element.getUserData("count"), node);
+			
 
 	}
 	}
@@ -103,25 +113,26 @@ public class XMLParser {
 		for (Node node1: nodeDictionary.values())
 		{
 			ArrayList<Node> childNodes = new ArrayList<Node>();
-			if (node1.getParent() != null) 
-			{
+
 				for (Node node2: nodeDictionary.values())
 				{
-					if (node2.getParent() == node1) 
+					
+					if (node2.getParent() != null && node2.getParent() == node1) 
 					{
 						childNodes.add(node2);
 					}
 				}
+				node1.setChildren(childNodes);
 			}
-			node1.setChildren(childNodes);
+			
 		}
-	}
+
 	
 	/**
 	 * create CCT (tree class)
 	 * @return Tree
 	 */
-	private Tree createTree(){
+	private void createTree(){
 		Node root = null;
 		for (Node node: nodeDictionary.values())
 		{
@@ -131,18 +142,18 @@ public class XMLParser {
 				break;
 			}
 		}
-		for (Node node: nodeDictionary.values())
+		/*for (Node node: nodeDictionary.values())
 		{
 			
-			System.out.println(node.getMethod().getLabel());
-			if(node.getParent()!= null)
-			System.out.println("node's parent: " + node.getParent().getMethod().getLabel() );
-			System.out.println("cost : " + node.getCost());
-			for(int i = 0; i<node.getChildren().size(); i++)
-				System.out.println(" node's children : "+ node.getChildren().get(i).getMethod().getLabel());
-		}
-		Tree ccTree = new Tree(root, methodList);
-		return ccTree;
-
+		//	System.out.println(node.getMethod().getLabel());
+		//	if(node.getParent()!= null)
+		//	System.out.println("node's parent: " + node.getParent().getMethod().getLabel() );
+		//	System.out.println("cost : " + node.getCost());
+		//	for(int i = 0; i<node.getChildren().size(); i++)
+		//		System.out.println(" node's children : "+ node.getChildren().get(i).getMethod().getLabel());
+		}*/
+		System.out.println("Total node count: " + nodeDictionary.size());
+		CCT = new Tree(root, methodList);
+		//System.out.println("CCT created");
 	}
 }

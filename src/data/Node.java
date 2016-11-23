@@ -9,11 +9,10 @@ public class Node {
 	int cost, height ,induced;
 	Node adjustedParent;
 	private Method method;
-	private Node parent;
-	//private Node childNode;
+	private Node parent;	
 	private ArrayList<Node> children;
 	private ArrayList<Node> adjustedChildern;
-    //leaf, classname, signature?
+   
 	public String getLeaf() {
 		return leaf;
 	}
@@ -50,13 +49,14 @@ public class Node {
 	private String className;
 	private String methodName;
 	private String methodSignature;
+	private int selfTime;
 	
 	public Node(){
 		//method= new Method();
 		parent = null;
 		adjustedParent= null;
 		children = new ArrayList<Node>();
-		//adjustedChildern =new ArrayList<Node>();
+		adjustedChildern =new ArrayList<Node>();
 		//setCost(0);
 		setHeight(0);
 		setInduced(0);
@@ -101,7 +101,9 @@ public class Node {
 	public void setAdjustedChildern(ArrayList<Node> adjustedChildern) {
 		this.adjustedChildern = adjustedChildern;
 	}
-	
+	public void addAdjustedChildern(Node node) {
+		this.adjustedChildern.add(node);
+	}
 	public Node getParent() {
 		return parent;
 	}
@@ -128,5 +130,17 @@ public class Node {
 
 	public void addChildNode(Node childNode) {
 		this.children.add(childNode);
+	}
+
+	public void setSelfTime(int selfTime) {
+		// TODO Auto-generated method stub
+		this.selfTime = selfTime;
+		
+	}
+
+	public int getSelfTime() {
+		// TODO Auto-generated method stub
+		return this.selfTime;
+		
 	}
 }
