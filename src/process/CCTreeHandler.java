@@ -17,7 +17,6 @@ public class CCTreeHandler {
 	public int SubsumingNodeCount = 0;
 	private static int thresholdCPD = 4;
 	private List <Method> subsumingMethods = new ArrayList<>();
-
 	public void reduceRecursivePath(Node node) {
 
 		node.setAdjustedParent(findAdjustedParent(node));
@@ -123,23 +122,21 @@ public class CCTreeHandler {
 		n.setInduced(n.getCost());
 		for (Node c : n.getChildren()) {
 			calculateInducedCost(c);
-			if (isSubsumedMethod(c.getMethod())) {
+			if (isSubsumedMethod(c)) {
 				n.setInduced(n.getInduced() + c.getInduced());
 			}
 		}
 		n.getMethod().setInduced(n.getMethod().getInduced() + n.getInduced());
 	}
 
-	private boolean isSubsumedMethod(Method m) {
+	private boolean isSubsumedMethod(Node node) {
 		///height and minimum common parent distance
 		///greater than four as subsuming methods. others, subsumed 
 		///check
-		if (m.getMinCPD() > thresholdCPD && m.getMaxHeight() > thresholdCPD){
-			if(!subsumingMethods.contains(m)){
-					subsumingMethods.add(m); 
-					subsumingMethodCount++;
-					SubsumingNodeCount += m.getNodes().size();
-					}
+		if (node.getMethod().getMinCPD() > thresholdCPD && node.getHeight() > thresholdCPD){
+			subsumingMethods.add(node.getMethod());
+			subsumingMethodCount++;
+			SubsumingNodeCount += node.getMethod().getNodes().size();
 			return false;
 		}
 		else //is subsumed
@@ -159,15 +156,15 @@ public class CCTreeHandler {
 */
 
 	public void rankTopTenMethodsByExclusiveCost(ArrayList<Method> methods) {
+		// TODO Auto-generated method stub
 		Map <String, Integer> methodCost = new HashMap<String, Integer>();
 		for(int i=0;i<methods.size();i++)
 			methodCost.put(methods.get(i).getLabel(), methods.get(i).getExclusiveCost());
 
 		List<Map.Entry<String, Integer>> list = mapSort(methodCost);
-		System.out.println("    ----    ");
 		System.out.println("Hot Methods:");
 		for(int i=0;i<10;i++)
-		System.out.println(list.get(i).getKey());// +", cost "+ list.get(i).getValue());
+		System.out.println(list.get(i).getKey() +", cost "+ list.get(i).getValue());
 		System.out.println("    ----    ");
 	}
 	
@@ -175,13 +172,11 @@ public class CCTreeHandler {
 		Map <String, Integer> methodCost = new HashMap<>();
 		for(int i=0;i<subsumingMethods.size();i++)
 			methodCost.put(subsumingMethods.get(i).getLabel() , subsumingMethods.get(i).getInduced());
-
 		List<Map.Entry<String, Integer>> list = mapSort(methodCost);
 		System.out.println("Subsuming Methods:");
 		for(int i=0;i<10;i++){
 			if(i<list.size())
-		System.out.println(list.get(i).getKey());// +", cost "+ list.get(i).getValue());
-			}
+		System.out.println(list.get(i).getKey() +", cost "+ list.get(i).getValue());}
 		System.out.println("------------------------------------------------------");
 		
 	}
@@ -195,6 +190,7 @@ public class CCTreeHandler {
 				return (m1.getValue().compareTo(m2.getValue()));
 			}
 		});
+		
 		Collections.reverse(list);
 		return list;
 	}
