@@ -13,7 +13,7 @@ public class Node {
 	private ArrayList<Node> children;
 	private ArrayList<Node> adjustedChildern;
    
-	public String getLeaf() {
+/*	public String getLeaf() {
 		return leaf;
 	}
 
@@ -27,7 +27,7 @@ public class Node {
 
 	public void setClassName(String className) {
 		this.className = className;
-	}
+	}*/
 
 	public String getMethodName() {
 		return methodName;
@@ -36,20 +36,20 @@ public class Node {
 	public void setMethodName(String methodName) {
 		this.methodName = methodName;
 	}
-
+/*
 	public String getMethodSignature() {
 		return methodSignature;
 	}
 
 	public void setMethodSignature(String methodSignature) {
 		this.methodSignature = methodSignature;
-	}
+	}*/
 
-	private String leaf;
-	private String className;
+	//private String leaf;
+	//private String className;
 	private String methodName;
-	private String methodSignature;
-	private int selfTime;
+	//private String methodSignature;
+	//private int selfTime;
 	
 	public Node(){
 		//method= new Method();
@@ -123,16 +123,16 @@ public class Node {
 		this.method = method;
 	}
 
-	@Override
+/*	@Override
 	public String toString() {
 		return "leaf :"+this.getLeaf() + "class: "+this.className+ "methodName: "+this.getMethodName();
-	}
+	}*/
 
 	public void addChildNode(Node childNode) {
 		this.children.add(childNode);
 	}
 
-	public void setSelfTime(int selfTime) {
+/*	public void setSelfTime(int selfTime) {
 		// TODO Auto-generated method stub
 		this.selfTime = selfTime;
 		
@@ -142,5 +142,5 @@ public class Node {
 		// TODO Auto-generated method stub
 		return this.selfTime;
 		
-	}
+	}*/
 }

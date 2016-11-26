@@ -17,7 +17,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		CCTreeHandler treeHandler ;
-		List<Tree> cctTreeList = new ArrayList<Tree>();
+		//List<Tree> cctTreeList = new ArrayList<Tree>();
 		File folder = new File("src/profiler");
 		File[] xmlFiles = folder.listFiles();
 		for (File xml : xmlFiles){
@@ -26,36 +26,30 @@ public class Main {
 				System.out.println(xml.getName());
 				XMLParser p = new XMLParser();
 			    Tree CCT = p.parse(xml);
-			    cctTreeList.add(CCT);
+/*			    cctTreeList.add(CCT);
 			}	    
 		}
 		
-		for(Tree CCT : cctTreeList){		    	
-			    
-			List<Node> listOfNodes = new ArrayList<>();			
+		for(Tree CCT : cctTreeList){	*/	    	
+			    		
 			treeHandler = new CCTreeHandler();			
 			treeHandler.reduceRecursivePath(CCT.getRoot());
-			Map<String, Integer> methodNameExclusiveCost = new HashMap<String, Integer>();
 			
 			for(Method treeMethod : CCT.getMethods()) {	
-				listOfNodes.addAll(treeMethod.getNodes());
 				treeHandler.minCPD(treeMethod);
-				
-				int methodCount = treeMethod.getCount();
-				int totalExclusiveCost = treeHandler.calculateCountNodeSelfTime(methodCount, listOfNodes);
-				treeMethod.setExclusiveCost(totalExclusiveCost);
-				methodNameExclusiveCost.put(treeMethod.getLabel(), treeMethod.getExclusiveCost());
-			}			
+					}			
 			treeHandler.calculateHeight(CCT.getRoot());
 			treeHandler.calculateInducedCost(CCT.getRoot());
-			treeHandler.rankTopTenMethodsByExclusiveCost(methodNameExclusiveCost);
 
 			System.out.println("Total Method count: "+ CCT.getMethods().size());
-			System.out.println("Subsuming method count: "+treeHandler.methodCount);
-			System.out.println("Subsuming method node count: "+treeHandler.nodeCount);
+			System.out.println("Subsuming method count: "+treeHandler.subsumingMethodCount);
+			System.out.println("Subsuming method node count: "+treeHandler.SubsumingNodeCount);
+			
+			treeHandler.rankTopTenMethodsByExclusiveCost(CCT.getMethods());
+			treeHandler.rankTopSubsumingMethods();
 			
 		}
 	}
 
-
+	}
 }

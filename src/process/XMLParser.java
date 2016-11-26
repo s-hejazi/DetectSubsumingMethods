@@ -41,7 +41,7 @@ public class XMLParser {
 			        XMLNode = nodeList.item(i);			        
 			        if (XMLNode instanceof Element) {
 			            Element element = (Element) XMLNode;
-			            element.setUserData("count", Integer.toString(i), null);
+			            element.setUserData("number", Integer.toString(i), null);
 			            addNodeInfo(element);
 			        }  
 			    }
@@ -64,7 +64,7 @@ public class XMLParser {
 	 * @param element
 	 */
 	private void addNodeInfo(Element element){
-		//CHECK IF EXISTS?
+
 		int methodCost = 0;
 		if (element != null) 
 		{
@@ -72,13 +72,12 @@ public class XMLParser {
 			//Create and Add method only if it has not been parsed before	
 			// METHOD WITH SAME NAME??
 			String methodName = element.getAttribute("methodName");
-			String selfTime = element.getAttribute("selfTime");
-			//////////////////////
 			if(element.hasAttribute("time")){
 					methodCost = Integer.parseInt(element.getAttribute("time"));
 			}
+			//Induced cost
 			node.setCost(methodCost);
-			node.setSelfTime(Integer.parseInt(selfTime));
+			//int invocationCount = Integer.parseInt(element.getAttribute("count"));
 			Method method = null;
 			for(Method m: methodList)
 			if(m.getLabel().equals(methodName)){
@@ -88,19 +87,21 @@ public class XMLParser {
 			if(method == null){
 			method = new Method(methodName);
 			methodList.add(method);
+			//add per call time			
+			
+			//method.setPerCallCost(selfTime/invocationCount);
 			}	
-			/////////////////???
-			//int methodCount = Integer.parseInt(element.getAttribute("count"));
-			//method.addCount(1);
+			//method.addInvocationCount(invocationCount);
 			method.addNodes(node);
 			//add isNode method and parent
 			node.setMethod(method);	
-
-			String parentKey = (String)((Element)element.getParentNode()).getUserData("count");
+			int selfTime = Integer.parseInt(element.getAttribute("selfTime"));
+			method.addExclusiveCost(selfTime);
+			String parentKey = (String)((Element)element.getParentNode()).getUserData("number");
 			if (parentKey!= null ){
 				node.setParent(nodeDictionary.get(parentKey));
 			}
-			nodeDictionary.put((String) element.getUserData("count"), node);
+			nodeDictionary.put((String) element.getUserData("number"), node);
 			
 
 	}
@@ -142,16 +143,7 @@ public class XMLParser {
 				break;
 			}
 		}
-		/*for (Node node: nodeDictionary.values())
-		{
-			
-		//	System.out.println(node.getMethod().getLabel());
-		//	if(node.getParent()!= null)
-		//	System.out.println("node's parent: " + node.getParent().getMethod().getLabel() );
-		//	System.out.println("cost : " + node.getCost());
-		//	for(int i = 0; i<node.getChildren().size(); i++)
-		//		System.out.println(" node's children : "+ node.getChildren().get(i).getMethod().getLabel());
-		}*/
+
 		System.out.println("Total node count: " + nodeDictionary.size());
 		CCT = new Tree(root, methodList);
 		//System.out.println("CCT created");
