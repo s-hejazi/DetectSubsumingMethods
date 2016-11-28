@@ -173,16 +173,22 @@ public class CCTreeHandler {
 	
 	public void rankTopSubsumingMethods(){
 		Map <String, Integer> methodCost = new HashMap<>();
-		for(int i=0;i<subsumingMethods.size();i++)
-			methodCost.put(subsumingMethods.get(i).getLabel() , subsumingMethods.get(i).getInduced());
+		if(subsumingMethods.size() > 0){
+			for(int i=0;i<subsumingMethods.size();i++)
+				methodCost.put(subsumingMethods.get(i).getLabel() , subsumingMethods.get(i).getInduced());
 
-		List<Map.Entry<String, Integer>> list = mapSort(methodCost);
-		System.out.println("Subsuming Methods:");
-		for(int i=0;i<10;i++){
-			if(i<list.size())
-		System.out.println(list.get(i).getKey());// +", cost "+ list.get(i).getValue());
-			}
+			List<Map.Entry<String, Integer>> list = mapSort(methodCost);
+			System.out.println("Subsuming Methods:");
+			for(int i=0;i<10;i++){
+				if(i<list.size())
+			System.out.println(list.get(i).getKey());// +", cost "+ list.get(i).getValue());
+				}
+			
+		}else{
+			System.out.println("No subsuming methods");
+		}
 		System.out.println("------------------------------------------------------");
+		
 		
 	}
 	
