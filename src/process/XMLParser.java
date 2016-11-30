@@ -98,8 +98,12 @@ public class XMLParser {
 			method.addNodes(node);
 			//add isNode method and parent
 			node.setMethod(method);	
-			int selfTime = Integer.parseInt(element.getAttribute("selfTime"));
-			method.addExclusiveCost(selfTime);
+			if(element.hasAttribute("selfTime")){
+				int selfTime = Integer.parseInt(element.getAttribute("selfTime"));
+				method.addExclusiveCost(selfTime);
+		}
+			
+			
 			String parentKey = (String)((Element)element.getParentNode()).getUserData("number");
 			if (parentKey!= null ){
 				node.setParent(nodeDictionary.get(parentKey));
