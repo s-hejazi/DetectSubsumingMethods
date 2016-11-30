@@ -20,7 +20,7 @@ import data.Tree;
 public class XMLParser {
 
 	private ArrayList<Method> methodList = new ArrayList <Method>();
-	private Map <String, Node> nodeDictionary = new HashMap();
+	private Map <String, Node> nodeDictionary = new HashMap <String, Node>();
 	Tree CCT;
 	//CCTreeHandler ccthandler = new CCTreeHandler();
 	
@@ -72,6 +72,8 @@ public class XMLParser {
 			//Create and Add method only if it has not been parsed before	
 			// METHOD WITH SAME NAME??
 			String methodName = element.getAttribute("methodName");
+			String className = element.getAttribute("class");
+			String signature = element.getAttribute("methodSignature");
 			if(element.hasAttribute("time")){
 					methodCost = Integer.parseInt(element.getAttribute("time"));
 			}
@@ -80,16 +82,17 @@ public class XMLParser {
 			//int invocationCount = Integer.parseInt(element.getAttribute("count"));
 			Method method = null;
 			for(Method m: methodList)
-			if(m.getLabel().equals(methodName)){
+			if(m.getLabel().equals(methodName) 
+					&& m.getClassName().equals(className)
+					&& m.getSignature().equals(signature)){
 				method = m;
 				break;
 			}
 			if(method == null){
 			method = new Method(methodName);
+			method.setClassName(className);
+			method.setSignature(signature);
 			methodList.add(method);
-			//add per call time			
-			
-			//method.setPerCallCost(selfTime/invocationCount);
 			}	
 			//method.addInvocationCount(invocationCount);
 			method.addNodes(node);

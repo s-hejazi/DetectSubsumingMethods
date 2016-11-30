@@ -21,8 +21,7 @@ public class Main {
 		File folder = new File("src/profiler");
 		File[] xmlFiles = folder.listFiles();
 		for (File xml : xmlFiles){
-			if(xml.isFile()){
-				
+			if(xml.isFile()){				
 				System.out.println(xml.getName());
 				XMLParser p = new XMLParser();
 			    Tree CCT = p.parse(xml);

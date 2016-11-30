@@ -7,10 +7,10 @@ public class Method {
 	int maxHeight;
 	int minCPD;
 	int induced;
-	//int count;
+	String className, signature;
 	private String label;
 	private int exclusiveCost;
-
+	
 	public Method(String name){
 		this.setLabel(name);
 		nodes = new ArrayList<Node>();
@@ -72,7 +72,20 @@ public class Method {
 	public void addExclusiveCost(int exclusiveCost) {
 		this.exclusiveCost += exclusiveCost;
 	}
+	public String getClassName() {
+		return className;
+	}
 
+	public void setClassName(String label) {
+		this.className = label;
+	}
+	public String getSignature() {
+		return signature;
+	}
+
+	public void setSignature(String signature) {
+		this.signature = signature;
+	}
 /*	public void setPerCallCost(int Cost) {
 		// TODO Auto-generated method stub
 		this.percallCost = Cost;
