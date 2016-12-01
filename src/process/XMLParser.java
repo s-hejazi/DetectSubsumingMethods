@@ -22,8 +22,6 @@ public class XMLParser {
 	private ArrayList<Method> methodList = new ArrayList <Method>();
 	private Map <String, Node> nodeDictionary = new HashMap <String, Node>();
 	Tree CCT;
-	//CCTreeHandler ccthandler = new CCTreeHandler();
-	
 	org.w3c.dom.Node numberAttr;
 	
 	public Tree parse(File xmlFile){
@@ -46,18 +44,15 @@ public class XMLParser {
 			        }  
 			    }
 			    addChildren();
-				createTree();
-			
+				createTree();	
 			}
-			
-			
+					
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return CCT;
-	}
-	
+	}	
 	
 	/**
 	 * Create Node in the tree, update method list
@@ -65,20 +60,14 @@ public class XMLParser {
 	 */
 	private void addNodeInfo(Element element){
 
-		int methodCost = 0;
+		int nodeInclusiveCost, nodeExclusiveCost = 0;
 		if (element != null) 
 		{
 			Node node = new Node();	
-			//Create and Add method only if it has not been parsed before	
-			// METHOD WITH SAME NAME??
 			String methodName = element.getAttribute("methodName");
 			String className = element.getAttribute("class");
 			String signature = element.getAttribute("methodSignature");
-			if(element.hasAttribute("time")){
-					methodCost = Integer.parseInt(element.getAttribute("time"));
-			}
-			//Induced cost
-			node.setCost(methodCost);
+
 			//int invocationCount = Integer.parseInt(element.getAttribute("count"));
 			Method method = null;
 			for(Method m: methodList)
@@ -96,11 +85,18 @@ public class XMLParser {
 			}	
 			//method.addInvocationCount(invocationCount);
 			method.addNodes(node);
-			//add isNode method and parent
 			node.setMethod(method);	
+			
+			//Inclusive cost
+			if(element.hasAttribute("time")){
+				nodeInclusiveCost = Integer.parseInt(element.getAttribute("time"));
+				method.addInclusiveCost(nodeInclusiveCost);
+		}
+			//Exclusive cost
 			if(element.hasAttribute("selfTime")){
-				int selfTime = Integer.parseInt(element.getAttribute("selfTime"));
-				method.addExclusiveCost(selfTime);
+				nodeExclusiveCost = Integer.parseInt(element.getAttribute("selfTime"));
+				node.setCost(nodeExclusiveCost);
+				method.addExclusiveCost(nodeExclusiveCost);
 		}
 			
 			
@@ -108,8 +104,7 @@ public class XMLParser {
 			if (parentKey!= null ){
 				node.setParent(nodeDictionary.get(parentKey));
 			}
-			nodeDictionary.put((String) element.getUserData("number"), node);
-			
+			nodeDictionary.put((String) element.getUserData("number"), node);		
 
 	}
 	}

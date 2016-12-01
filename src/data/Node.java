@@ -69,7 +69,7 @@ public class Node {
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
-
+	
 	public int getHeight() {
 		return height;
 	}

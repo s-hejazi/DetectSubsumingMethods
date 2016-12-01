@@ -9,13 +9,14 @@ public class Method {
 	int induced;
 	String className, signature;
 	private String label;
-	private int exclusiveCost;
+	private int exclusiveCost, inclusiveCost;
 	
 	public Method(String name){
 		this.setLabel(name);
 		nodes = new ArrayList<Node>();
 		setMaxheight(0);
 		exclusiveCost = 0;
+		inclusiveCost = 0;
 		//setMinCPD(0);
 		setInduced(0);
 	}
@@ -85,6 +86,13 @@ public class Method {
 
 	public void setSignature(String signature) {
 		this.signature = signature;
+	}
+	public int getInclusiveCost() {
+		return inclusiveCost;
+	}
+
+	public void addInclusiveCost(int cost) {
+		this.inclusiveCost += cost;
 	}
 /*	public void setPerCallCost(int Cost) {
 		// TODO Auto-generated method stub
