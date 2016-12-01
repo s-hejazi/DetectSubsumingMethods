@@ -1,14 +1,10 @@
 package process;
 
-import data.Method;
-import data.Node;
-import data.Tree;
-
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import data.Method;
+import data.Tree;
+import visualizer.VisualizeMain;
 
 public class Main {
 
@@ -46,6 +42,7 @@ public class Main {
 			
 			treeHandler.rankTopTenMethodsByExclusiveCost(CCT.getMethods());
 			treeHandler.rankTopSubsumingMethods();
+			VisualizeMain.createTreeView(CCT, treeHandler.topSubsumingList);
 			
 		}
 	}

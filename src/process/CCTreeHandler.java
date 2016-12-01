@@ -17,7 +17,9 @@ public class CCTreeHandler {
 	public int SubsumingNodeCount = 0;
 	private static int thresholdCPD = 4;
 	private ArrayList<Method> subsumingMethods = new ArrayList<>();
-
+	/////////////////////method equality///////////////////////////////////
+	public ArrayList <String> topSubsumingList = new ArrayList<String>();
+	
 	public void reduceRecursivePath(Node node) {
 
 		node.setAdjustedParent(findAdjustedParent(node));
@@ -153,7 +155,7 @@ public class CCTreeHandler {
 	 * }
 	 */
 
-	public void rankTopTenMethodsByExclusiveCost(ArrayList<Method> methods) {
+/*	public void rankTopTenMethodsByExclusiveCost(ArrayList<Method> methods) {
 		Map<String, Integer> methodCost = new HashMap<String, Integer>();
 		String typeOfMethod = "Hot Methods";
 		if(methods.size() > 0){
@@ -163,7 +165,7 @@ public class CCTreeHandler {
 			System.out.println("No hot methods");
 		}
 		System.out.println("------------------------------------------------------");
-	}
+	}*/
 
 	/*private void printHotMethodName(ArrayList<Method> methods, Map<String, Integer> methodCost, String typeOfMethod) {
 		for (int i = 0; i < methods.size(); i++)
@@ -177,35 +179,42 @@ public class CCTreeHandler {
 														// list.get(i).getValue());
 	}*/
 
-	public void rankTopSubsumingMethods() {
-		Map<String, Integer> methodCost = new HashMap<>();
-		String typeOfMethod = "Subsuming Methods";
-		if (subsumingMethods.size() > 0) {
-			printMethodName(subsumingMethods, methodCost, typeOfMethod);
 
-		} else {
-			System.out.println("No subsuming methods");
-		}
-		System.out.println("------------------------------------------------------");
-
-	}
-
-	private void printMethodName(ArrayList<Method> methods, Map<String, Integer> methodCost, String typeOfMethod) {
-		for (int i = 0; i < methods.size(); i++)
-			methodCost.put(methods.get(i).getLabel(), methods.get(i).getInduced());
+	public void rankTopTenMethodsByExclusiveCost(ArrayList<Method> methods) {
+		Map <String, Integer> methodCost = new HashMap<String, Integer>();
+		for(int i=0;i<methods.size();i++)
+			methodCost.put(methods.get(i).getLabel(), methods.get(i).getExclusiveCost());
 
 		List<Map.Entry<String, Integer>> list = mapSort(methodCost);
-		System.out.println(typeOfMethod + " :");
-		for (int i = 0; i < 10 && i < list.size(); i++) {			
-				System.out.println(list.get(i).getKey());// +", cost "+
-															// list.get(i).getValue());
-		}
+		System.out.println("    ----    ");
+		System.out.println("Hot Methods:");
+		for(int i=0;i<10;i++)
+		System.out.println(list.get(i).getKey());// +", cost "+ list.get(i).getValue());
+		System.out.println("    ----    ");
 	}
+	
+	public void rankTopSubsumingMethods(){
+		Map <String, Integer> methodCost = new HashMap<>();
+		for(int i=0;i<subsumingMethods.size();i++)
+			methodCost.put(subsumingMethods.get(i).getLabel() , subsumingMethods.get(i).getInduced());
 
-	public List<Map.Entry<String, Integer>> mapSort(Map<String, Integer> methodCost) {
-		List<Map.Entry<String, Integer>> list = new LinkedList<Map.Entry<String, Integer>>(methodCost.entrySet());
-		Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-			public int compare(Map.Entry<String, Integer> m1, Map.Entry<String, Integer> m2) {
+		List<Map.Entry<String, Integer>> list = mapSort(methodCost);
+		System.out.println("Subsuming Methods:");
+		for(int i=0;i<10;i++)
+			if(i<list.size()){
+				System.out.println(list.get(i).getKey());// +", cost "+ list.get(i).getValue());
+				topSubsumingList.add(list.get(i).getKey());
+			}
+		System.out.println("------------------------------------------------------");
+		
+	}
+	
+	public List<Map.Entry<String, Integer>> mapSort(Map <String, Integer> methodCost){
+		List<Map.Entry<String, Integer>> list =
+				new LinkedList <Map.Entry<String, Integer>>(methodCost.entrySet());
+		Collections.sort(list, new Comparator <Map.Entry<String, Integer>>(){
+			public int compare(Map.Entry<String, Integer> m1,
+								Map.Entry<String, Integer> m2){
 				return (m1.getValue().compareTo(m2.getValue()));
 			}
 		});

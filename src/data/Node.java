@@ -29,13 +29,13 @@ public class Node {
 		this.className = className;
 	}*/
 
-	public String getMethodName() {
+/*	public String getMethodName() {
 		return methodName;
 	}
 
 	public void setMethodName(String methodName) {
 		this.methodName = methodName;
-	}
+	}*/
 /*
 	public String getMethodSignature() {
 		return methodSignature;
@@ -47,7 +47,7 @@ public class Node {
 
 	//private String leaf;
 	//private String className;
-	private String methodName;
+	//private String methodName;
 	//private String methodSignature;
 	//private int selfTime;
 	
