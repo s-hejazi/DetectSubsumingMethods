@@ -37,10 +37,13 @@ public class Main {
 			System.out.println("Subsuming method count: "+treeHandler.subsumingMethodCount);
 			System.out.println("Subsuming method node count: "+treeHandler.SubsumingNodeCount);
 			
-			treeHandler.rankTopTenMethodsByExclusiveCost(CCT.getMethods());
+			//////////treeHandler.rankTopTenMethodsByExclusiveCost(CCT.getMethods());
 			treeHandler.rankTopSubsumingMethods();
-			treeHandler.rankTopTenMethodsByInclusiveCost(CCT.getMethods());
-			//VisualizeMain.createTreeView(CCT, treeHandler.topSubsumingList);
+			//////////treeHandler.rankTopTenMethodsByInclusiveCost(CCT.getMethods());
+			if(treeHandler.SubsumingNodeCount>10)
+				VisualizeMain.createTreeView(CCT, treeHandler.subsumingMethods.subList(0, 10));
+			else
+				VisualizeMain.createTreeView(CCT, treeHandler.subsumingMethods);
 			
 		}
 	}

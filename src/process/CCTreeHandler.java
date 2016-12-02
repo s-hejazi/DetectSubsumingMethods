@@ -17,8 +17,8 @@ public class CCTreeHandler {
 	public int subsumingMethodCount = 0;
 	public int SubsumingNodeCount = 0;
 	private static int thresholdCPD = 4;
-	private ArrayList<Method> subsumingMethods = new ArrayList<>();
-	public ArrayList <Method> topSubsumingList = new ArrayList<Method>();
+	public ArrayList<Method> subsumingMethods = new ArrayList<Method>();
+	
 	
 	public void reduceRecursivePath(Node node) {
 
@@ -155,20 +155,18 @@ public class CCTreeHandler {
 		for(int i=0;i<methods.size();i++)
 			System.out.println(t[i]);*/
 		Collections.sort(methods, new Comparator<Method>(){
-			public int compare(Method m1, Method m2){
-				
-					return (new Integer(m1.getExclusiveCost()).compareTo(m2.getExclusiveCost()));
-				
+			public int compare(Method m1, Method m2){			
+					return (new Integer(m1.getExclusiveCost()).compareTo(m2.getExclusiveCost()));		
 			}
 		});
 		Collections.reverse(methods);
-		System.out.println("    ----    ");
+		/*System.out.println("    ----    ");
 		System.out.println("top exclusive cost Methods:");
 		for(int i=0;i<20;i++){
 			Method m = methods.get(i);
 		System.out.println(m.getLabel()+", "+ m.getClassName()+", "+ m.getSignature()+ m.getExclusiveCost());
 		}
-		System.out.println("    ----    ");
+		System.out.println("    ----    ");*/
 	}
 	public void rankTopTenMethodsByInclusiveCost(ArrayList<Method> methods) {
 /*		Map <String, Integer> methodCost = new HashMap<String, Integer>();
@@ -177,20 +175,18 @@ public class CCTreeHandler {
 
 		List<Map.Entry<String, Integer>> list = mapSort(methodCost);*/
 		Collections.sort(methods, new Comparator<Method>(){
-			public int compare(Method m1, Method m2){
-				
-					return (new Integer(m1.getInclusiveCost()).compareTo(m2.getInclusiveCost()));
-				
+			public int compare(Method m1, Method m2){			
+					return (new Integer(m1.getInclusiveCost()).compareTo(m2.getInclusiveCost()));			
 			}
 		});
 		Collections.reverse(methods);
-		System.out.println("    ----    ");
+		/*System.out.println("    ----    ");
 		System.out.println("top inclusive cost Methods:");
 		for(int i=0;i<20;i++){
 			Method m = methods.get(i);
 		System.out.println(m.getLabel()+", "+ m.getClassName()+", "+ m.getSignature());
 		}
-		System.out.println("    ----    ");
+		System.out.println("    ----    ");*/
 	}
 	
 	public void rankTopSubsumingMethods(){
@@ -202,13 +198,13 @@ public class CCTreeHandler {
 			}
 		});
 		Collections.reverse(subsumingMethods);
-		System.out.println("Subsuming Methods:");
+/*		System.out.println("Subsuming Methods:");
 		for(int i=0;i<20;i++)
 			if(i<subsumingMethods.size()){
 				Method m = subsumingMethods.get(i);
 				System.out.println(m.getLabel()+", "+ m.getClassName()+", "+ m.getSignature());
 			}
-		System.out.println("------------------------------------------------------");
+		System.out.println("------------------------------------------------------");*/
 		
 	}
 	
