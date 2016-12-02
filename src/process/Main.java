@@ -4,7 +4,7 @@ import java.io.File;
 
 import data.Method;
 import data.Tree;
-import visualizer.VisualizeMain;
+//import visualizer.VisualizeMain;
 
 public class Main {
 
@@ -40,6 +40,7 @@ public class Main {
 			treeHandler.rankTopTenMethodsByExclusiveCost(CCT.getMethods());
 			treeHandler.rankTopSubsumingMethods();
 			treeHandler.rankTopTenMethodsByInclusiveCost(CCT.getMethods());
+				treeHandler.computeSeSiValue();
 			//VisualizeMain.createTreeView(CCT, treeHandler.topSubsumingList);
 			
 		}

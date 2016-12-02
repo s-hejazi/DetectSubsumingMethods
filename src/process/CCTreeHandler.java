@@ -1,13 +1,6 @@
 package process;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import data.Method;
 import data.Node;
@@ -19,6 +12,9 @@ public class CCTreeHandler {
 	private static int thresholdCPD = 4;
 	private ArrayList<Method> subsumingMethods = new ArrayList<>();
 	public ArrayList <Method> topSubsumingList = new ArrayList<Method>();
+	ArrayList<String> topExclusiveMethods = new ArrayList<>();
+	ArrayList<String> topInclusiveMethods = new ArrayList<>();
+	ArrayList<String> topSubsumingMethods = new ArrayList<>();
 	
 	public void reduceRecursivePath(Node node) {
 
@@ -29,6 +25,28 @@ public class CCTreeHandler {
 		for (Node childNode : node.getChildren()) {
 			reduceRecursivePath(childNode);
 		}
+	}
+
+	public void computeSeSiValue(){
+		int Se, Si, S = 0;
+
+			List<String> commonSe = new ArrayList<>(topExclusiveMethods);
+			commonSe.retainAll(topSubsumingMethods);
+			Se = commonSe.size();
+			List<String> commonSi = new ArrayList<>(topInclusiveMethods);
+			commonSi.retainAll(topSubsumingMethods);
+			Si = commonSi.size();
+			S = topSubsumingMethods.size() - (Se + Si);
+			if(Se > 0 ) {
+				System.out.println("------ Se value ---- " + Se);
+				System.out.println("Common Se method names " + commonSe);
+			}
+			if(Si > 0){
+				System.out.println("------ Si value ---- "+Si);
+				System.out.println("Common Si method names "+commonSi);
+			}
+			System.out.println("------ S value  ---- "+S);
+
 	}
 
 	public Node findAdjustedParent(Node currentNode) {
@@ -166,6 +184,7 @@ public class CCTreeHandler {
 		System.out.println("top exclusive cost Methods:");
 		for(int i=0;i<20;i++){
 			Method m = methods.get(i);
+			topExclusiveMethods.add(m.getLabel()+", "+ m.getClassName() + ", "+m.getSignature());
 		System.out.println(m.getLabel()+", "+ m.getClassName()+", "+ m.getSignature()+ m.getExclusiveCost());
 		}
 		System.out.println("    ----    ");
@@ -188,6 +207,7 @@ public class CCTreeHandler {
 		System.out.println("top inclusive cost Methods:");
 		for(int i=0;i<20;i++){
 			Method m = methods.get(i);
+			topInclusiveMethods.add(m.getLabel()+", "+ m.getClassName() + ", "+m.getSignature());
 		System.out.println(m.getLabel()+", "+ m.getClassName()+", "+ m.getSignature());
 		}
 		System.out.println("    ----    ");
@@ -206,6 +226,7 @@ public class CCTreeHandler {
 		for(int i=0;i<20;i++)
 			if(i<subsumingMethods.size()){
 				Method m = subsumingMethods.get(i);
+				topSubsumingMethods.add(m.getLabel()+", "+ m.getClassName() + ", "+m.getSignature());
 				System.out.println(m.getLabel()+", "+ m.getClassName()+", "+ m.getSignature());
 			}
 		System.out.println("------------------------------------------------------");
