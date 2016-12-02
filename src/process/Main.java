@@ -40,7 +40,7 @@ public class Main {
 			//////////treeHandler.rankTopTenMethodsByExclusiveCost(CCT.getMethods());
 			treeHandler.rankTopSubsumingMethods();
 			//////////treeHandler.rankTopTenMethodsByInclusiveCost(CCT.getMethods());
-			if(treeHandler.SubsumingNodeCount>10)
+			if(treeHandler.subsumingMethodCount>10)
 				VisualizeMain.createTreeView(CCT, treeHandler.subsumingMethods.subList(0, 10));
 			else
 				VisualizeMain.createTreeView(CCT, treeHandler.subsumingMethods);
