@@ -21,12 +21,9 @@ public class Main {
 				System.out.println(xml.getName());
 				XMLParser p = new XMLParser();
 			    Tree CCT = p.parse(xml);
-/*			    cctTreeList.add(CCT);
-			}	    
-		}
-		
-		for(Tree CCT : cctTreeList){	*/	    	
-			    		
+			    CCT.setTitle(xml.getName());
+   	
+  		
 			treeHandler = new CCTreeHandler();			
 			treeHandler.reduceRecursivePath(CCT.getRoot());
 			
@@ -42,7 +39,8 @@ public class Main {
 			
 			treeHandler.rankTopTenMethodsByExclusiveCost(CCT.getMethods());
 			treeHandler.rankTopSubsumingMethods();
-			VisualizeMain.createTreeView(CCT, treeHandler.topSubsumingList);
+			treeHandler.rankTopTenMethodsByInclusiveCost(CCT.getMethods());
+			//VisualizeMain.createTreeView(CCT, treeHandler.topSubsumingList);
 			
 		}
 	}

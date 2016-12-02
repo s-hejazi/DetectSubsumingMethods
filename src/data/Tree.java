@@ -6,6 +6,15 @@ public class Tree {
 
 	Node root;
 	ArrayList<Method> methods;
+	String title;
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 	public Node getRoot() {
 		return root;
