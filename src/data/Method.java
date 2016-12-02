@@ -7,15 +7,16 @@ public class Method {
 	int maxHeight;
 	int minCPD;
 	int induced;
-	int count;
+	String className, signature;
 	private String label;
-	private int exclusiveCostOfAllNodes;
-
+	private int exclusiveCost, inclusiveCost;
+	
 	public Method(String name){
 		this.setLabel(name);
 		nodes = new ArrayList<Node>();
 		setMaxheight(0);
-		count = 0;
+		exclusiveCost = 0;
+		inclusiveCost = 0;
 		//setMinCPD(0);
 		setInduced(0);
 	}
@@ -24,16 +25,13 @@ public class Method {
 		return minCPD;
 	}
 	
-	public int getCount(){
-		return count;
+/*	
+	public int getInvocationCount(){
+		 return count;
 	}
-	
-/*	public void setCount(int c){
-		 count = c;
-	}*/
-	public void addCount(int c){
+	public void addInvocationCount(int c){
 		 count += c;
-	}
+	}*/
 	public ArrayList<Node> getNodes() {
 		return nodes;
 	}
@@ -68,15 +66,43 @@ public class Method {
 		this.maxHeight= maxHeight;
 	}
 
-	public void setExclusiveCost(int totalExclusiveCost) {
+	public int getExclusiveCost() {
+		return exclusiveCost;
+	}
+
+	public void addExclusiveCost(int exclusiveCost) {
+		this.exclusiveCost += exclusiveCost;
+	}
+	public String getClassName() {
+		return className;
+	}
+
+	public void setClassName(String label) {
+		this.className = label;
+	}
+	public String getSignature() {
+		return signature;
+	}
+
+	public void setSignature(String signature) {
+		this.signature = signature;
+	}
+	public int getInclusiveCost() {
+		return inclusiveCost;
+	}
+
+	public void addInclusiveCost(int cost) {
+		this.inclusiveCost += cost;
+	}
+/*	public void setPerCallCost(int Cost) {
 		// TODO Auto-generated method stub
-		this.exclusiveCostOfAllNodes = totalExclusiveCost;
+		this.percallCost = Cost;
 		
 	}
 
-	public Integer getExclusiveCost() {
+	public Integer getPerCallCost() {
 		// TODO Auto-generated method stub
-		return this.exclusiveCostOfAllNodes;
-	}
+		return this.percallCost;
+	}*/
 
 }

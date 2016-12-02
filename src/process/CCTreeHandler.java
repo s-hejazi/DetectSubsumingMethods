@@ -1,9 +1,10 @@
 package process;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,21 +13,23 @@ import data.Node;
 
 public class CCTreeHandler {
 
-	public int methodCount = 0;
-	public int nodeCount = 0;
+	public int subsumingMethodCount = 0;
+	public int SubsumingNodeCount = 0;
 	private static int thresholdCPD = 4;
-
+	private ArrayList<Method> subsumingMethods = new ArrayList<>();
+	/////////////////////method equality///////////////////////////////////
+	public ArrayList <String> topSubsumingList = new ArrayList<String>();
+	
 	public void reduceRecursivePath(Node node) {
 
 		node.setAdjustedParent(findAdjustedParent(node));
-		if(node.getAdjustedParent() != null)
-		node.getAdjustedParent().addAdjustedChildern(node);
+		if (node.getAdjustedParent() != null)
+			node.getAdjustedParent().addAdjustedChildern(node);
 
 		for (Node childNode : node.getChildren()) {
 			reduceRecursivePath(childNode);
 		}
-		}
-	
+	}
 
 	public Node findAdjustedParent(Node currentNode) {
 		Node match1 = null;
@@ -41,8 +44,8 @@ public class CCTreeHandler {
 					match2 = currentParent;
 				}
 			}
-				currentParent = currentParent.getAdjustedParent();
-			
+			currentParent = currentParent.getAdjustedParent();
+
 		}
 
 		if (match1 == null || match2 == null) {
@@ -72,7 +75,7 @@ public class CCTreeHandler {
 			int dist = CPD(n.getMethod(), m);
 			if (dist < m.getMinCPD()) {
 				m.setMinCPD(dist);
-				//m = n.getMethod();
+				// m = n.getMethod();
 			}
 			n = n.getParent();
 		}
@@ -121,46 +124,101 @@ public class CCTreeHandler {
 		n.setInduced(n.getCost());
 		for (Node c : n.getChildren()) {
 			calculateInducedCost(c);
-			if (isSubsumedMethod(c)) {
+			if (isSubsumedMethod(c.getMethod())) {
 				n.setInduced(n.getInduced() + c.getInduced());
 			}
 		}
 		n.getMethod().setInduced(n.getMethod().getInduced() + n.getInduced());
 	}
 
-	private boolean isSubsumedMethod(Node node) {
-		///height and minimum common parent distance
-		///greater than four as subsuming methods. others, subsumed 
-		///check
-		if (node.getMethod().getMinCPD() > thresholdCPD && node.getHeight() > thresholdCPD){
-			//methodCount+= node.getMethod().getCount();
-			methodCount++;
-			nodeCount += node.getMethod().getNodes().size();
+	private boolean isSubsumedMethod(Method m) {
+		/// height and minimum common parent distance
+		/// greater than four as subsuming methods. others, subsumed
+		/// check
+		if (m.getMinCPD() > thresholdCPD && m.getMaxHeight() > thresholdCPD) {
+			if (!subsumingMethods.contains(m)) {
+				subsumingMethods.add(m);
+				subsumingMethodCount++;
+				SubsumingNodeCount += m.getNodes().size();
+			}
 			return false;
-		}
-		else //is subsumed
-		return true;
+		} else // is subsumed
+			return true;
 	}
 
+	/*
+	 * public int calculateCountNodeSelfTime(int methodCountValue, List<Node>
+	 * listOfNodes) { int exclusiveCost = 0; for(Node currentNode :
+	 * listOfNodes){ int nodeSelfTime = currentNode.getSelfTime(); exclusiveCost
+	 * += nodeSelfTime * methodCountValue; } return exclusiveCost;
+	 * 
+	 * }
+	 */
 
-	public int calculateCountNodeSelfTime(int methodCountValue, List<Node> listOfNodes) {
-		int exclusiveCost = 0; 
-		for(Node currentNode : listOfNodes){
-			int nodeSelfTime = currentNode.getSelfTime();			
-			exclusiveCost += nodeSelfTime * methodCountValue;
-		}
-		return exclusiveCost;
+/*	public void rankTopTenMethodsByExclusiveCost(ArrayList<Method> methods) {
+		Map<String, Integer> methodCost = new HashMap<String, Integer>();
+		String typeOfMethod = "Hot Methods";
+		if(methods.size() > 0){
+			printMethodName(methods, methodCost, typeOfMethod);
 	
+		}else{
+			System.out.println("No hot methods");
+		}
+		System.out.println("------------------------------------------------------");
+	}*/
+
+	/*private void printHotMethodName(ArrayList<Method> methods, Map<String, Integer> methodCost, String typeOfMethod) {
+		for (int i = 0; i < methods.size(); i++)
+			methodCost.put(methods.get(i).getLabel(), methods.get(i).getExclusiveCost());
+
+		List<Map.Entry<String, Integer>> list = mapSort(methodCost);
+		
+		System.out.println(typeOfMethod + ":");
+		for (int i = 0; i < 10; i++)
+			System.out.println(list.get(i).getKey());// +", cost "+
+														// list.get(i).getValue());
+	}*/
+
+
+	public void rankTopTenMethodsByExclusiveCost(ArrayList<Method> methods) {
+		Map <String, Integer> methodCost = new HashMap<String, Integer>();
+		for(int i=0;i<methods.size();i++)
+			methodCost.put(methods.get(i).getLabel(), methods.get(i).getExclusiveCost());
+
+		List<Map.Entry<String, Integer>> list = mapSort(methodCost);
+		System.out.println("    ----    ");
+		System.out.println("Hot Methods:");
+		for(int i=0;i<10;i++)
+		System.out.println(list.get(i).getKey());// +", cost "+ list.get(i).getValue());
+		System.out.println("    ----    ");
 	}
+	
+	public void rankTopSubsumingMethods(){
+		Map <String, Integer> methodCost = new HashMap<>();
+		for(int i=0;i<subsumingMethods.size();i++)
+			methodCost.put(subsumingMethods.get(i).getLabel() , subsumingMethods.get(i).getInduced());
 
-
-	public List<Integer> rankTopTenMethodsByExclusiveCost(Map<String, Integer> methodNameExclusiveCost) {
-		// TODO Auto-generated method stub
-		List<Integer> exclusiveCost = (List<Integer>) methodNameExclusiveCost.values();
-		Collections.reverse(exclusiveCost);
-		List<Integer> topTenList = exclusiveCost.subList(0, 9);		
-		return topTenList;
+		List<Map.Entry<String, Integer>> list = mapSort(methodCost);
+		System.out.println("Subsuming Methods:");
+		for(int i=0;i<10;i++)
+			if(i<list.size()){
+				System.out.println(list.get(i).getKey());// +", cost "+ list.get(i).getValue());
+				topSubsumingList.add(list.get(i).getKey());
+			}
+		System.out.println("------------------------------------------------------");
 		
-		
+	}
+	
+	public List<Map.Entry<String, Integer>> mapSort(Map <String, Integer> methodCost){
+		List<Map.Entry<String, Integer>> list =
+				new LinkedList <Map.Entry<String, Integer>>(methodCost.entrySet());
+		Collections.sort(list, new Comparator <Map.Entry<String, Integer>>(){
+			public int compare(Map.Entry<String, Integer> m1,
+								Map.Entry<String, Integer> m2){
+				return (m1.getValue().compareTo(m2.getValue()));
+			}
+		});
+		Collections.reverse(list);
+		return list;
 	}
 }

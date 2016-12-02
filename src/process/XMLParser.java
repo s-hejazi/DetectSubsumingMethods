@@ -20,10 +20,8 @@ import data.Tree;
 public class XMLParser {
 
 	private ArrayList<Method> methodList = new ArrayList <Method>();
-	private Map <String, Node> nodeDictionary = new HashMap();
+	private Map <String, Node> nodeDictionary = new HashMap <String, Node>();
 	Tree CCT;
-	//CCTreeHandler ccthandler = new CCTreeHandler();
-	
 	org.w3c.dom.Node numberAttr;
 	
 	public Tree parse(File xmlFile){
@@ -41,67 +39,72 @@ public class XMLParser {
 			        XMLNode = nodeList.item(i);			        
 			        if (XMLNode instanceof Element) {
 			            Element element = (Element) XMLNode;
-			            element.setUserData("count", Integer.toString(i), null);
+			            element.setUserData("number", Integer.toString(i), null);
 			            addNodeInfo(element);
 			        }  
 			    }
 			    addChildren();
-				createTree();
-			
+				createTree();	
 			}
-			
-			
+					
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return CCT;
-	}
-	
+	}	
 	
 	/**
 	 * Create Node in the tree, update method list
 	 * @param element
 	 */
 	private void addNodeInfo(Element element){
-		//CHECK IF EXISTS?
-		int methodCost = 0;
+
+		int nodeInclusiveCost, nodeExclusiveCost = 0;
 		if (element != null) 
 		{
 			Node node = new Node();	
-			//Create and Add method only if it has not been parsed before	
-			// METHOD WITH SAME NAME??
 			String methodName = element.getAttribute("methodName");
-			String selfTime = element.getAttribute("selfTime");
-			//////////////////////
-			if(element.hasAttribute("time")){
-					methodCost = Integer.parseInt(element.getAttribute("time"));
-			}
-			node.setCost(methodCost);
-			node.setSelfTime(Integer.parseInt(selfTime));
+			String className = element.getAttribute("class");
+			String signature = element.getAttribute("methodSignature");
+
+			//int invocationCount = Integer.parseInt(element.getAttribute("count"));
 			Method method = null;
 			for(Method m: methodList)
-			if(m.getLabel().equals(methodName)){
+			if(m.getLabel().equals(methodName) 
+					&& m.getClassName().equals(className)
+					&& m.getSignature().equals(signature)){
 				method = m;
 				break;
 			}
 			if(method == null){
 			method = new Method(methodName);
+			method.setClassName(className);
+			method.setSignature(signature);
 			methodList.add(method);
 			}	
-			/////////////////???
-			//int methodCount = Integer.parseInt(element.getAttribute("count"));
-			//method.addCount(1);
+			//method.addInvocationCount(invocationCount);
 			method.addNodes(node);
-			//add isNode method and parent
 			node.setMethod(method);	
-
-			String parentKey = (String)((Element)element.getParentNode()).getUserData("count");
+			
+			//Inclusive cost
+			if(element.hasAttribute("time")){
+				nodeInclusiveCost = Integer.parseInt(element.getAttribute("time"));
+				method.addInclusiveCost(nodeInclusiveCost);
+		}
+			//Exclusive cost
+			if(element.hasAttribute("selfTime")){
+				nodeExclusiveCost = Integer.parseInt(element.getAttribute("selfTime"));
+				node.setCost(nodeExclusiveCost);
+				method.addExclusiveCost(nodeExclusiveCost);
+		}
+			
+			
+			String parentKey = (String)((Element)element.getParentNode()).getUserData("number");
 			if (parentKey!= null ){
 				node.setParent(nodeDictionary.get(parentKey));
 			}
-			nodeDictionary.put((String) element.getUserData("count"), node);
-			
+			nodeDictionary.put((String) element.getUserData("number"), node);		
 
 	}
 	}
@@ -142,16 +145,7 @@ public class XMLParser {
 				break;
 			}
 		}
-		/*for (Node node: nodeDictionary.values())
-		{
-			
-		//	System.out.println(node.getMethod().getLabel());
-		//	if(node.getParent()!= null)
-		//	System.out.println("node's parent: " + node.getParent().getMethod().getLabel() );
-		//	System.out.println("cost : " + node.getCost());
-		//	for(int i = 0; i<node.getChildren().size(); i++)
-		//		System.out.println(" node's children : "+ node.getChildren().get(i).getMethod().getLabel());
-		}*/
+
 		System.out.println("Total node count: " + nodeDictionary.size());
 		CCT = new Tree(root, methodList);
 		//System.out.println("CCT created");

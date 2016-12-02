@@ -1,4 +1,4 @@
-package process;
+/*package process;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -46,9 +46,9 @@ public class UserHandler extends DefaultHandler {
     @Override
     public void endElement(String uri,
                            String localName, String qName) throws SAXException {
-        /*if (qName.equalsIgnoreCase("node")) {
+        if (qName.equalsIgnoreCase("node")) {
             treeWithNodeList.add(node);
-        }*/
+        }
         if(qName.equalsIgnoreCase("node")){
             Node currentNode = nodeStack.pop();
             if(nodeStack.isEmpty()){
@@ -69,3 +69,4 @@ public class UserHandler extends DefaultHandler {
         }
     }
 }
+*/
