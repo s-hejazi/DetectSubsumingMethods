@@ -15,18 +15,19 @@ public final class VisualTree extends AbstractContextTree {
 	public VisualTree(Tree CCT, ArrayList<String> methodList) {
 		Node n = CCT.getRoot();
 		subsumingNameList = new ArrayList<String>(methodList);
-		root = new VisualTreeNode(n.getMethod().getLabel(), n.getCost(), false);
+		root = new VisualTreeNode(n.getMethod().getLabel(), n.getCost(), "200");
 		createVisualTree(CCT.getRoot(), root);
 	}
 
 	public void createVisualTree(Node n, VisualTreeNode v){
-		boolean subsumingTree;
+		String subsumingTree;
 		for(Node c: n.getChildren()){
-			subsumingTree = false;
-			if(subsumingNameList.contains(
-					c.getMethod().getLabel()) 
-					|| v.isInSubsumingSubtree()){
-				subsumingTree = true;
+			subsumingTree = "100";
+			if(subsumingNameList.contains(c.getMethod().getLabel())){
+				subsumingTree = Integer.toString(subsumingNameList.indexOf(c.getMethod().getLabel())*2);
+			}
+			else if(!v.getSubsumingSubtreeID().equals("200")){
+				subsumingTree = v.getSubsumingSubtreeID();
 			}
 			final VisualTreeNode a = new VisualTreeNode(c.getMethod().getLabel(), c.getCost(), subsumingTree);
 			v.connectChild(a);

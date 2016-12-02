@@ -17,7 +17,7 @@ public class VisualizeMain {
 
 	public static void createTreeView(Tree CCT, ArrayList<String> methodList) {
 		final VisualTree tree = new VisualTree(CCT, methodList);
-		final JFrame frame = new JFrame("Tree View");
+		final JFrame frame = new JFrame(CCT.getTitle()+ " tree View");
 		final TreeView view = new TreeView(new TreeViewRenderer[] {
 				  new RadialRenderer()
 		});
@@ -27,6 +27,7 @@ public class VisualizeMain {
 
 		
 		frame.add(view);
+		
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
